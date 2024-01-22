@@ -1,0 +1,15 @@
+.toolbar{
+    border-radius: 1rem;
+    display: flex;
+    justify-content: end;
+    .user-data{
+        display: flex;
+        align-items: center;
+        .user-icon{
+            width: fit-content;
+            height: fit-content;
+            font-size: 2rem;
+            margin-left: 0.5rem;
+        }
+    }
+}

@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 const materialModules = [
   MatSidenavModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatToolbarModule
 ];
 
 @NgModule({

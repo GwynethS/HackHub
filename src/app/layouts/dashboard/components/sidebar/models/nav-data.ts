@@ -6,5 +6,13 @@ export const sidebarData = [
     {
         icon: 'school',
         label: 'Alumnos'
+    },
+    {
+        icon: 'calendar_month',
+        label: 'Clases'
+    },
+    {
+        icon: 'menu_book',
+        label: 'Cursos'
     }
 ];

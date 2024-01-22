@@ -1,16 +1,12 @@
 <mat-drawer-container class="dashboard-container" autosize>
   <mat-drawer #drawer mode="side" opened>
     <app-sidebar></app-sidebar>
-    <!-- <p>Auto-resizing sidenav</p>
-    @if (showFiller) {
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    }
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> -->
   </mat-drawer>
 
-  <div class="example-sidenav-content" style="padding: 1rem;">
+  <div class="example-sidenav-content" style="padding: 1rem">
     <app-toolbar></app-toolbar>
+    <div style="margin-top: 1rem;">
+      <app-students></app-students>
+    </div>
   </div>
 </mat-drawer-container>

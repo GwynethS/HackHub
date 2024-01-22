@@ -6,7 +6,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        padding: 1rem 1rem 0 1rem;
+        padding: 1.5rem 1rem 0 1rem;
         .logo{
             background-color: #fff;
             text-align: center;
@@ -65,19 +65,17 @@
             align-items: center;
             color: #fff;
             height: 3rem;
+            padding-left: 0.2rem;
             .sidebar-list-icon{
-                padding-left: 0.2rem;
                 margin: 0 0.5rem;
             }
             .sidebar-link-text{
                 margin-left: 1rem;
+                text-align: center;
             }
         }
         &:hover{
-            background-color: #fff;
-            .sidebar-list-link{
-                color: #000;
-            }
+            background-color: #3b494f;
         }
     }
 }
