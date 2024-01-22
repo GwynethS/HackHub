@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-students-form',
@@ -7,15 +8,37 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './students-form.component.scss'
 })
 export class StudentsFormComponent {
-  value = '';
-
   studentForm: FormGroup;
+
+  @Output()
+    studentSubmitted = new EventEmitter;
+
+  @ViewChild(FormGroupDirective)
+    private formDir!: FormGroupDirective;
 
   constructor(private fb: FormBuilder){
     this.studentForm = this.fb.group({
-      firstName: this.fb.control('', [Validators.required]),
-      lastName: this.fb.control('', [Validators.required]),
-      email: this.fb.control('', [Validators.required]),
+      firstName: this.fb.control('', [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.pattern('[a-zA-Z]*')]),
+      lastName: this.fb.control('', [
+        Validators.required, 
+        Validators.minLength(2), 
+        Validators.pattern('[a-zA-Z]*')]),
+      email: this.fb.control('', [
+        Validators.required, 
+        Validators.email]),
     })
+  }
+
+  onSubmit(): void{
+    if(this.studentForm.invalid){
+      this.studentForm.markAllAsTouched();
+    }else{
+      this.studentSubmitted.emit(this.studentForm.value);
+      this.formDir.resetForm();
+      console.log('enviado');
+    }
   }
 }

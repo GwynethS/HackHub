@@ -1,0 +1,28 @@
+.student-form-container{
+  display: flex;
+  gap: 1rem;
+  .student-form-inputs{
+    width: 80%;
+    .name-form-field{
+      width: 100%;
+    }
+    .lastName-form-field{
+      width: 100%;
+    }
+    .email-form-field{
+      width: 100%;
+    }
+  }
+  .student-form-buttons{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    button{
+      width: 8rem;
+      height: 3rem;
+    }
+  }
+}
