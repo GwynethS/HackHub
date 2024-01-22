@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { HeadlineDirective } from './directives/headline.directive';
-
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -11,7 +11,11 @@ import { HeadlineDirective } from './directives/headline.directive';
     HeadlineDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
+  ],
+  exports:[
+    MaterialModule
   ]
 })
 export class SharedModule { }

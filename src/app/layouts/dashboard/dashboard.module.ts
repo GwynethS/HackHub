@@ -4,8 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { StudentsModule } from './pages/students/students.module';
-
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,8 @@ import { StudentsModule } from './pages/students/students.module';
   ],
   imports: [
     CommonModule,
-    StudentsModule
+    StudentsModule,
+    SharedModule
   ],
   exports:[
     DashboardComponent
