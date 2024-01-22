@@ -14,6 +14,9 @@ import { StudentsTableComponent } from './components/students-table/students-tab
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    StudentsComponent
   ]
 })
 export class StudentsModule { }
