@@ -1,1 +1,24 @@
-<p>students-form works!</p>
+<form [formGroup] = 'studentForm'>
+  <mat-form-field 
+    [hideRequiredMarker]="studentForm.get('firstName')?.value" 
+    class="name-form-field">
+    <mat-label>Nombre</mat-label>
+    <input formControlName="firstName" matInput type="text"/>
+  </mat-form-field>
+
+  <mat-form-field 
+    [hideRequiredMarker]="studentForm.get('lastName')?.value" 
+    class="last-form-field">
+    <mat-label>Apellido</mat-label>
+    <input formControlName="lastName" matInput type="text"/>
+  </mat-form-field>
+
+  <mat-form-field 
+    [hideRequiredMarker]="studentForm.get('email')?.value" 
+    class="email-form-field">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput type="text"/>
+  </mat-form-field>
+</form>
+
+<pre>{{studentForm.value | json}}</pre>

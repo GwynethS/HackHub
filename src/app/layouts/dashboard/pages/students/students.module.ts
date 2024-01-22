@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { StudentsComponent } from './students.component';
 import { StudentsFormComponent } from './components/students-form/students-form.component';
 import { StudentsTableComponent } from './components/students-table/students-table.component';
+import { SharedModule } from '../../../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { StudentsTableComponent } from './components/students-table/students-tab
     StudentsTableComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports:[
     StudentsComponent
