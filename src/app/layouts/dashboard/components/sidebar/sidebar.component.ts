@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { sidebarData } from './models/nav-data';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  collapsed = false;
+  sideData = sidebarData;
 
+  @Output()
+    collapsedChange = new EventEmitter<boolean>();
+
+  toogleCollapse(){
+    this.collapsed = !this.collapsed;
+  }
+
+  closeSidebar(){
+    this.collapsed = false;
+  }
 }

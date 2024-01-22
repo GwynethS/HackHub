@@ -1,1 +1,19 @@
-<p>sidebar works!</p>
+<div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toogleCollapse()">H</button>
+        <div class="logo-text" *ngIf="collapsed">HackHub</div>
+        <button class="btn-close" *ngIf="collapsed" (click)="closeSidebar()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <ul class="sidebar-list">
+        <li 
+            *ngFor="let data of sideData"
+            class="sidebar-list-item">
+            <a href="#" class="sidebar-list-link">
+                <mat-icon class="sidebar-list-icon">{{data.icon}}</mat-icon>
+                <span class="sidebar-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
