@@ -7,7 +7,7 @@ import { Student } from './models/student';
   styleUrl: './students.component.scss'
 })
 export class StudentsComponent {
-  dataSource: Student[] = [
+  students: Student[] = [
     {
       id: 1,
       firstName: 'Gwyneth',
@@ -16,6 +16,6 @@ export class StudentsComponent {
     }
   ]
   onStudentSubmitted(ev: Student){
-    this.dataSource = [...this.dataSource, {...ev, id: this.dataSource.length + 1}]
+    this.students = [...this.students, {...ev, id: this.students.length + 1}]
   }
 }

@@ -7,6 +7,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
 
 const materialModules = [
   MatSidenavModule,
@@ -15,7 +16,8 @@ const materialModules = [
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
-  FormsModule
+  FormsModule,
+  MatTableModule
 ];
 
 @NgModule({
