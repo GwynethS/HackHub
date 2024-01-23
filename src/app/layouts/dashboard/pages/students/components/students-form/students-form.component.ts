@@ -39,7 +39,10 @@ export class StudentsFormComponent {
     }else{
       this.studentSubmitted.emit(this.studentForm.value);
       this.formDir.resetForm();
-      console.log('enviado');
     }
+  }
+
+  onClearInputs(): void{
+    this.studentForm.reset();
   }
 }

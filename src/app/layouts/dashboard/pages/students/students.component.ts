@@ -61,6 +61,7 @@ export class StudentsComponent {
   }
 
   onDeleteStudent(id: number): void{
+    this.studentSelected = null;
     this.students = this.students.filter((student) => student.id !== id);
   }
 }
