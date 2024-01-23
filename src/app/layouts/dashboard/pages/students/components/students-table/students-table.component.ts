@@ -11,10 +11,10 @@ export class StudentsTableComponent {
     dataSource: Student[] = [];
   
   @Output()
-  deleteStudent = new EventEmitter<number>();
+    editStudent = new EventEmitter<Student>();
 
   @Output()
-  editStudent = new EventEmitter<Student>();
+    deleteStudent = new EventEmitter<number>();
 
   displayedColumns = ['id', 'fullname', 'email', 'actions'];
 }

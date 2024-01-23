@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormGroupDirective } from '@angular/forms';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-students-form',

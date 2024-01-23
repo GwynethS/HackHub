@@ -1,2 +1,10 @@
-<app-students-form (studentSubmitted)="onStudentSubmitted($event)"></app-students-form>
-<app-students-table [dataSource]="students"></app-students-table>
+<app-students-form 
+  (studentSubmitted)="onStudentSubmitted($event)"
+>
+
+</app-students-form>
+<app-students-table 
+  [dataSource]="students"
+  (editStudent)="onEditStudent($event)"
+  (deleteStudent)="onDeleteStudent($event)">
+</app-students-table>
