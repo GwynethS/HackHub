@@ -16,7 +16,8 @@ import { MaterialModule } from './material/material.module';
   ],
   exports:[
     MaterialModule,
-    FullNamePipe
+    FullNamePipe,
+    HeadlineDirective
   ]
 })
 export class SharedModule { }
