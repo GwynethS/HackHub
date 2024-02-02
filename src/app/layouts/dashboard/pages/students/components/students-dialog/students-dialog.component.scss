@@ -1,0 +1,41 @@
+.student-dialog-header{
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1{
+    font-weight: 500;
+  }
+  button{
+    text-align: center;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mat-icon{
+      margin: 0;
+    }
+  }
+}
+.student-form-container{
+  .student-form-inputs{
+    padding: 0;
+    .name-form-field{
+      width: 100%;
+    }
+    .lastName-form-field{
+      width: 100%;
+    }
+    .email-form-field{
+      width: 100%;
+    }
+  }
+}
+
+.student-form-buttons{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}

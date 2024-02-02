@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Student } from './models/student';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentsService } from '../../../../core/services/student.service';
+import { MatDialog } from '@angular/material/dialog';
+import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 
 @Component({
   selector: 'app-students',
@@ -15,6 +17,7 @@ export class StudentsComponent {
 
   constructor(
     private studentService: StudentsService,
+    public dialog: MatDialog,
     private fb: FormBuilder
   ) {
     this.studentService.getStudents().subscribe({
@@ -35,6 +38,20 @@ export class StudentsComponent {
     //   ]),
     //   email: this.fb.control('', [Validators.required, Validators.email]),
     // });
+  }
+
+  onAddStudent(): void{
+    this.dialog.open(StudentsDialogComponent).afterClosed().subscribe({
+      next: (studentData) => {
+        if(studentData){
+          this.studentService.addStudent(studentData).subscribe({
+            next: (students) => {
+              this.students = students;
+            }
+          })
+        }
+      }
+    })
   }
 
   // onStudentSubmitted(ev: Student) {

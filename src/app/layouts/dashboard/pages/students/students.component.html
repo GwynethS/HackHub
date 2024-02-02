@@ -4,10 +4,14 @@
 </app-students-form> -->
 
 <h2 appHeadline class="mt-4 mb-3">Lista de estudiantes</h2>
-<app-students-table 
-  [dataSource]="students"
-  >
-</app-students-table>
+
+<div class="d-flex justify-content-end mb-4">
+  <button mat-flat-button color="primary" (click)="onAddStudent()">
+    Añadir
+  </button>
+</div>
+
+<app-students-table [dataSource]="students"> </app-students-table>
 
 <!-- (editStudent)="onEditStudent($event)"
   (deleteStudent)="onDeleteStudent($event)" -->

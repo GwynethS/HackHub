@@ -23,7 +23,7 @@ export class StudentsService {
   }
 
   addStudent(studentData: Student){
-    students = [...students, {...studentData, id: students.length++}];
+    students = [...students, {...studentData, id: students.length + 1}];
 
     return this.getStudents();
   }
