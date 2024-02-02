@@ -2,7 +2,7 @@
     <div class="logo-container">
         <button class="logo" (click)="toogleCollapse()">H</button>
         <div class="logo-text" *ngIf="collapsed">HackHub</div>
-        <button class="btn-close" *ngIf="collapsed" (click)="closeSidebar()">
+        <button type="button" class="btn-closed" *ngIf="collapsed" (click)="closeSidebar()">
             <mat-icon>close</mat-icon>
         </button>
     </div>

@@ -28,18 +28,21 @@
             font-weight: 700;
             color: #fff;
         }
-        .btn-close{
+        .btn-closed{
+            display: flex;
+            align-items: center;
             position: relative;
             left: 2.5rem;
             background-color: #263238;
-            color:#fff;
+            color:#ffffffc7;
+            padding: 0.5rem;
             border: none;
             cursor: pointer;
-            padding: 0.5rem;
             border-radius: 0.5rem;
             transition: all 0.4s ease;
             &:hover{
                 background-color: #3b494f;
+                color:#ffffff;
             }
         }
     }
@@ -66,6 +69,7 @@
             color: #fff;
             height: 3rem;
             padding-left: 0.2rem;
+            text-decoration: none;
             .sidebar-list-icon{
                 margin: 0 0.5rem;
             }
