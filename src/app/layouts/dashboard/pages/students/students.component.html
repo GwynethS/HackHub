@@ -1,17 +1,17 @@
-<h2 appHeadline class="mt-4 mb-3">Registrar estudiante</h2>
+<!-- <h2 appHeadline class="mt-4 mb-3">Registrar estudiante</h2>
 <app-students-form 
   (studentSubmitted)="onStudentSubmitted($event)">
-</app-students-form>
+</app-students-form> -->
 
 <h2 appHeadline class="mt-4 mb-3">Lista de estudiantes</h2>
 <app-students-table 
   [dataSource]="students"
-  (editStudent)="onEditStudent($event)"
-  (deleteStudent)="onDeleteStudent($event)">
+  >
 </app-students-table>
 
-
-<div *ngIf="studentSelected" class="mt-4">
+<!-- (editStudent)="onEditStudent($event)"
+  (deleteStudent)="onDeleteStudent($event)" -->
+<!-- <div *ngIf="studentSelected" class="mt-4">
   <h2 appHeadline class="mt-4 mb-4">Editar estudiante</h2>
   <form (ngSubmit)="onSaveEditStudent()" [formGroup] = 'studentForm' class="student-form-container">
     <div class="student-form-inputs container">
@@ -49,4 +49,4 @@
       <button mat-stroked-button color="primary" (click)="onCancelEditStudent()" type="button">Cancelar</button>
     </div>
   </form>
-</div>
+</div> -->

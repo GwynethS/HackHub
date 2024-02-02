@@ -6,6 +6,7 @@ import { StudentsTableComponent } from './components/students-table/students-tab
 import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsRoutingModule } from './students-routing.module';
+import { StudentsService } from '../../../../core/services/student.service';
 
 
 
@@ -23,6 +24,9 @@ import { StudentsRoutingModule } from './students-routing.module';
   ],
   exports:[
     StudentsComponent
+  ],
+  providers: [
+    StudentsService
   ]
 })
 export class StudentsModule { }
