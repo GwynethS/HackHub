@@ -5,6 +5,7 @@ import { StudentsFormComponent } from './components/students-form/students-form.
 import { StudentsTableComponent } from './components/students-table/students-table.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudentsRoutingModule } from './students-routing.module';
 
 
 
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    StudentsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
   ],

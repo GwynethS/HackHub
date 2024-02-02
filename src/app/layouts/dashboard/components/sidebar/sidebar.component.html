@@ -1,19 +1,47 @@
 <div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
-    <div class="logo-container">
-        <button class="logo" (click)="toogleCollapse()">H</button>
-        <div class="logo-text" *ngIf="collapsed">HackHub</div>
-        <button type="button" class="btn-closed" *ngIf="collapsed" (click)="closeSidebar()">
-            <mat-icon>close</mat-icon>
-        </button>
+  <div class="logo-container">
+    <button class="logo" (click)="toogleCollapse()">H</button>
+    <div class="logo-text" *ngIf="collapsed">HackHub</div>
+    <button
+      type="button"
+      class="btn-closed"
+      *ngIf="collapsed"
+      (click)="closeSidebar()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <mat-nav-list class="sidebar-list">
+    <div class="sidebar-list-item">
+      <a
+        #studentsLink="routerLinkActive"
+        routerLinkActive
+        [activated]="studentsLink.isActive"
+        routerLink="students"
+        mat-list-item
+        class="sidebar-list-link"
+      >
+        <div class="sidebar-list-link-content">
+          <mat-icon class="sidebar-list-icon">school</mat-icon>
+          <span class="sidebar-link-text" *ngIf="collapsed">Estudiantes</span>
+        </div>
+      </a>
     </div>
-    <ul class="sidebar-list">
-        <li 
-            *ngFor="let data of sideData"
-            class="sidebar-list-item">
-            <a href="#" class="sidebar-list-link">
-                <mat-icon class="sidebar-list-icon">{{data.icon}}</mat-icon>
-                <span class="sidebar-link-text" *ngIf="collapsed">{{data.label}}</span>
-            </a>
-        </li>
-    </ul>
+    
+    <div class="sidebar-list-item">
+      <a
+        #coursesLink="routerLinkActive"
+        routerLinkActive
+        [activated]="coursesLink.isActive"
+        routerLink="courses"
+        mat-list-item
+        class="sidebar-list-link"
+      >
+        <div class="sidebar-list-link-content">
+          <mat-icon class="sidebar-list-icon">menu_book</mat-icon>
+          <span class="sidebar-link-text" *ngIf="collapsed">Cursos</span>
+        </div>
+      </a>
+    </div>
+  </mat-nav-list>
 </div>

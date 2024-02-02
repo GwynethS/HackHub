@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
 
 const materialModules = [
   MatSidenavModule,
@@ -17,7 +18,8 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   FormsModule,
-  MatTableModule
+  MatTableModule,
+  MatListModule
 ];
 
 @NgModule({

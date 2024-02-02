@@ -64,19 +64,26 @@
         border-radius: 0.5rem;
         transition: all 0.4s ease;
         .sidebar-list-link{
-            display: flex;
-            align-items: center;
-            color: #fff;
             height: 3rem;
-            padding-left: 0.2rem;
+            padding: 0;
+            padding-left: 0.3rem;
             text-decoration: none;
-            .sidebar-list-icon{
-                margin: 0 0.5rem;
+            border-radius: 0.5rem;
+            .sidebar-list-link-content{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                .sidebar-list-icon{
+                    margin: 0 0.5rem;
+                    color: #fff;
+                }
+                .sidebar-link-text{
+                    margin-left: 1rem;
+                    color: #fff;
+                    text-align: center;
+                }
             }
-            .sidebar-link-text{
-                margin-left: 1rem;
-                text-align: center;
-            }
+            
         }
         &:hover{
             background-color: #3b494f;

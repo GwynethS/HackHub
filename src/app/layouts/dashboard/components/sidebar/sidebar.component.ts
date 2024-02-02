@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { sidebarData } from './models/nav-data';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +7,6 @@ import { sidebarData } from './models/nav-data';
 })
 export class SidebarComponent {
   collapsed = false;
-  sideData = sidebarData;
 
   @Output()
     collapsedChange = new EventEmitter<boolean>();
