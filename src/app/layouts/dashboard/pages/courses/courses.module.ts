@@ -2,12 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { CoursesRoutingModule } from './courses-routing.module';
+import { CoursesTableComponent } from './components/courses-table/courses-table.component';
+import { CoursesDialogComponent } from './components/courses-dialog/courses-dialog.component';
+import { CoursesService } from './courses.service';
 
 
 
 @NgModule({
   declarations: [
-    CoursesComponent
+    CoursesComponent,
+    CoursesTableComponent,
+    CoursesDialogComponent
   ],
   imports: [
     CommonModule,
@@ -15,6 +20,9 @@ import { CoursesRoutingModule } from './courses-routing.module';
   ],
   exports:[
     CoursesComponent
+  ],
+  providers:[
+    CoursesService
   ]
 })
 export class CoursesModule { }

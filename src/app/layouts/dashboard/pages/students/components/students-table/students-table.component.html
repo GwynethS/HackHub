@@ -18,10 +18,10 @@
   <ng-container matColumnDef="actions" class="students-table-actions-column">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
     <td mat-cell *matCellDef="let student" class="students-table-actions-cells" > 
-      <button mat-button (click)="editStudent.emit(student)">
+      <button mat-icon-button (click)="editStudent.emit(student)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-button (click)="deleteStudent.emit(student.id)">
+      <button mat-icon-button (click)="deleteStudent.emit(student.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
