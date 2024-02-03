@@ -33,17 +33,16 @@
         </div>
       </div>
     </div>
-
-    <div class="student-form-buttons">
-      <button
-        mat-stroked-button
-        color="primary"
-        type="button"
-        (click)="onClearInputs()"
-      >
-        Limpiar
-      </button>
-      <button (click)="onCreate()" mat-flat-button color="primary" type="submit">Guardar</button>
-    </div>
   </form>
+</div>
+<div mat-dialog-actions class="student-dialog-buttons">
+  <button
+    mat-stroked-button
+    color="primary"
+    type="button"
+    (click)="onClearInputs()"
+  >
+    Limpiar
+  </button>
+  <button (click)="onCreate()" mat-flat-button color="primary" type="submit">Guardar</button>
 </div>
