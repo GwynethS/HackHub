@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Student } from '../../layouts/dashboard/pages/students/models/student';
 import { delay, finalize, of } from 'rxjs';
+import { Student } from './models/student';
 
 let students: Student[] = [
   {

@@ -13,7 +13,7 @@ import { StudentsComponent } from './pages/students/students.component';
   declarations: [
     DashboardComponent,
     SidebarComponent,
-    ToolbarComponent
+    ToolbarComponent,
   ],
   imports: [
     CommonModule,
