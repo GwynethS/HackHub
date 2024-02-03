@@ -11,8 +11,6 @@ import { StudentsDialogComponent } from './components/students-dialog/students-d
   styleUrl: './students.component.scss',
 })
 export class StudentsComponent {
-  studentSelected: Student | null = null;
-
   students: Student[] = [];
 
   constructor(
@@ -23,45 +21,31 @@ export class StudentsComponent {
     this.studentService.getStudents().subscribe({
       next: (students) => {
         this.students = students;
-      }
-    })
-    // this.studentForm = this.fb.group({
-    //   firstName: this.fb.control('', [
-    //     Validators.required,
-    //     Validators.minLength(2),
-    //     Validators.pattern('[a-zA-Z]*'),
-    //   ]),
-    //   lastName: this.fb.control('', [
-    //     Validators.required,
-    //     Validators.minLength(2),
-    //     Validators.pattern('[a-zA-Z]*'),
-    //   ]),
-    //   email: this.fb.control('', [Validators.required, Validators.email]),
-    // });
+      },
+    });
   }
 
-  onAddStudent(): void{
-    this.dialog.open(StudentsDialogComponent).afterClosed().subscribe({
-      next: (studentData) => {
-        if(studentData){
-          this.studentService.addStudent(studentData).subscribe({
-            next: (students) => {
-              this.students = students;
-            }
-          })
-        }
-      }
-    })
+  onCreateStudent(): void {
+    this.dialog
+      .open(StudentsDialogComponent)
+      .afterClosed()
+      .subscribe({
+        next: (studentData) => {
+          if (studentData) {
+            this.studentService.createStudent(studentData).subscribe({
+              next: (students) => {
+                this.students = students;
+              },
+            });
+          }
+        },
+      });
   }
 
-  // onStudentSubmitted(ev: Student) {
-  //   this.students = [...this.students, { ...ev, id: this.students.length + 1 }];
-  // }
-
-  // onEditStudent(ev: Student) {
-  //   this.studentSelected = ev;
-  //   this.studentForm.patchValue(this.studentSelected);
-  // }
+  onEditStudent(ev: Student) {
+    // this.studentSelected = ev;
+    // this.studentForm.patchValue(this.studentSelected);
+  }
 
   // onSaveEditStudent() {
   //   if (this.studentForm.invalid || this.studentSelected === null) {
@@ -76,13 +60,11 @@ export class StudentsComponent {
   //   }
   // }
 
-  // onCancelEditStudent() {
-  //   this.studentSelected = null;
-  //   this.studentForm.reset();
-  // }
-
   onDeleteStudent(id: number): void {
-    this.studentSelected = null;
-    this.students = this.students.filter((student) => student.id !== id);
+    this.studentService.deleteStudentById(id).subscribe({
+      next: (students) => {
+        this.students = students;
+      }
+    });
   }
 }
