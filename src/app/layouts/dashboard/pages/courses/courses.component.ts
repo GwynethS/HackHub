@@ -23,6 +23,20 @@ export class CoursesComponent {
     })
   }
 
+  onCreateCourse(): void{
+    this.dialog.open(CoursesDialogComponent).afterClosed().subscribe({
+      next: (courseData) => {
+        if(courseData){
+          this.courseService.createCourse(courseData).subscribe({
+            next: (courses) =>{
+              this.courses = courses;
+            }
+          })
+        }
+      }
+    })
+  }
+
   onEditCourse(ev: Course) {
     this.dialog.open(CoursesDialogComponent, {
       data: ev

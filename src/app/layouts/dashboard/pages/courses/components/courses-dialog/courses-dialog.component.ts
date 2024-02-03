@@ -25,7 +25,7 @@ export class CoursesDialogComponent {
       teacher: this.fb.control('', [
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern('[a-zA-Z]*')
+        Validators.pattern('[a-zA-Z\\s]*')
       ])
     })
   
