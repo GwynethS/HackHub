@@ -43,22 +43,20 @@ export class StudentsComponent {
   }
 
   onEditStudent(ev: Student) {
-    // this.studentSelected = ev;
-    // this.studentForm.patchValue(this.studentSelected);
+    this.dialog.open(StudentsDialogComponent, {
+      data: ev
+    }).afterClosed().subscribe({
+      next: (studentData) => {
+        if(studentData){
+          this.studentService.updateStudent(ev.id, studentData).subscribe({
+            next: (students) => {
+              this.students = students;
+            }
+          })
+        }
+      }
+    })
   }
-
-  // onSaveEditStudent() {
-  //   if (this.studentForm.invalid || this.studentSelected === null) {
-  //     this.studentForm.markAllAsTouched();
-  //   } else {
-  //     this.students = this.students.map((student) =>
-  //       student.id === this.studentSelected?.id
-  //         ? { ...this.studentSelected, ...this.studentForm.value }
-  //         : student
-  //     );
-  //     this.studentSelected = null;
-  //   }
-  // }
 
   onDeleteStudent(id: number): void {
     this.studentService.deleteStudentById(id).subscribe({

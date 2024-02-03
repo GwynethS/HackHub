@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Student } from '../../models/student';
 
 @Component({
   selector: 'app-students-dialog',
@@ -12,7 +13,9 @@ export class StudentsDialogComponent {
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<StudentsDialogComponent>
+    private dialogRef: MatDialogRef<StudentsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA)
+      private editingStudent? : Student
   ) {
     this.studentForm = this.fb.group({
       firstName: this.fb.control('', [
@@ -27,6 +30,10 @@ export class StudentsDialogComponent {
       ]),
       email: this.fb.control('', [Validators.required, Validators.email]),
     });
+
+    if(editingStudent){
+      this.studentForm.patchValue(editingStudent);
+    }
   }
 
   onCreate(): void {
