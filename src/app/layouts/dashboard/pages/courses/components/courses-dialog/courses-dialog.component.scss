@@ -1,0 +1,26 @@
+.course-dialog-header{
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h1{
+    font-weight: 500;
+  }
+  button{
+    text-align: center;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mat-icon{
+      margin: 0;
+    }
+  }
+}
+
+.course-dialog-buttons{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 1rem 1rem 0;
+}

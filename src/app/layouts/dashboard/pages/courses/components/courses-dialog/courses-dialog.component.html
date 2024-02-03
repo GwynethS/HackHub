@@ -1,1 +1,39 @@
-<p>courses-dialog works!</p>
+<div class="course-dialog-header">
+  <h1 mat-dialog-title appHeadline>Registrar curso</h1>
+  <button matDialogClose mat-icon-button type="button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="courseForm" class="course-form-container">
+    <div class="course-form-inputs">
+      <div class="">
+        <mat-form-field class="name-form-field">
+          <mat-label>Nombre</mat-label>
+          <input formControlName="name" matInput type="text" />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="teacher-form-field">
+          <mat-label>Docente</mat-label>
+          <input formControlName="teacher" matInput type="text" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="course-dialog-buttons">
+  <button
+    mat-stroked-button
+    color="primary"
+    type="button"
+    (click)="onClearInputs()"
+  >
+    Limpiar
+  </button>
+  <button (click)="onCreate()" mat-flat-button color="primary" type="submit">
+    Guardar
+  </button>
+</div>
