@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Student } from './models/student';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentsService } from '../../../../core/services/student.service';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
@@ -16,7 +15,6 @@ export class StudentsComponent {
   constructor(
     private studentService: StudentsService,
     public dialog: MatDialog,
-    private fb: FormBuilder
   ) {
     this.studentService.getStudents().subscribe({
       next: (students) => {

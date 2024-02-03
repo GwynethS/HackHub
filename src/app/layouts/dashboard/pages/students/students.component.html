@@ -1,8 +1,3 @@
-<!-- <h2 appHeadline class="mt-4 mb-3">Registrar estudiante</h2>
-<app-students-form 
-  (studentSubmitted)="onStudentSubmitted($event)">
-</app-students-form> -->
-
 <h2 appHeadline class="mt-4 mb-3">Lista de estudiantes</h2>
 
 <div class="d-flex justify-content-end mb-4">
@@ -11,47 +6,9 @@
   </button>
 </div>
 
-<app-students-table [dataSource]="students" (editStudent)="onEditStudent($event)"
-(deleteStudent)="onDeleteStudent($event)"> </app-students-table>
-
-<!-- (editStudent)="onEditStudent($event)"
-  (deleteStudent)="onDeleteStudent($event)" -->
-<!-- <div *ngIf="studentSelected" class="mt-4">
-  <h2 appHeadline class="mt-4 mb-4">Editar estudiante</h2>
-  <form (ngSubmit)="onSaveEditStudent()" [formGroup] = 'studentForm' class="student-form-container">
-    <div class="student-form-inputs container">
-      <div class="row">
-        <div class="col-6">
-          <mat-form-field
-            class="name-form-field">
-            <mat-label>Nombre</mat-label>
-            <input formControlName="firstName" matInput type="text"/>
-          </mat-form-field>
-        </div>
-      
-        <div class="col-6">
-          <mat-form-field 
-            class="lastName-form-field">
-            <mat-label>Apellido</mat-label>
-            <input formControlName="lastName" matInput type="text"/>
-          </mat-form-field>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-12">
-          <mat-form-field 
-            class="email-form-field">
-            <mat-label>Email</mat-label>
-            <input formControlName="email" matInput type="text"/>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-  
-    <div class="student-form-buttons">
-      <button mat-flat-button color="primary" type="submit">Editar</button>
-      <button mat-stroked-button color="primary" (click)="onCancelEditStudent()" type="button">Cancelar</button>
-    </div>
-  </form>
-</div> -->
+<app-students-table
+  [dataSource]="students"
+  (editStudent)="onEditStudent($event)"
+  (deleteStudent)="onDeleteStudent($event)"
+>
+</app-students-table>
