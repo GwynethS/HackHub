@@ -5,6 +5,7 @@ import { CoursesRoutingModule } from './courses-routing.module';
 import { CoursesTableComponent } from './components/courses-table/courses-table.component';
 import { CoursesDialogComponent } from './components/courses-dialog/courses-dialog.component';
 import { CoursesService } from './courses.service';
+import { SharedModule } from '../../../../shared/shared.module';
 
 
 
@@ -12,11 +13,12 @@ import { CoursesService } from './courses.service';
   declarations: [
     CoursesComponent,
     CoursesTableComponent,
-    CoursesDialogComponent
+    CoursesDialogComponent,
   ],
   imports: [
     CommonModule,
-    CoursesRoutingModule
+    CoursesRoutingModule,
+    SharedModule
   ],
   exports:[
     CoursesComponent
