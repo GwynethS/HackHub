@@ -6,8 +6,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { StudentsModule } from './pages/students/students.module';
 import { SharedModule } from '../../shared/shared.module';
 import { CoursesModule } from './pages/courses/courses.module';
-import { RouterModule } from '@angular/router';
-import { StudentsComponent } from './pages/students/students.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,22 +19,7 @@ import { StudentsComponent } from './pages/students/students.component';
     SharedModule,
     StudentsModule,
     CoursesModule,
-    RouterModule.forChild([
-      {
-        path: 'students',
-        loadChildren: () =>
-          import('./pages/students/students.module').then(
-            (m) => m.StudentsModule
-          )
-      },
-      {
-        path: 'courses',
-        loadChildren: () =>
-          import('./pages/courses/courses.module').then(
-            (m) => m.CoursesModule
-          )
-      }
-    ])
+    DashboardRoutingModule
   ],
   exports:[
     DashboardComponent

@@ -3,6 +3,7 @@ import { Student } from './models/student';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import { StudentsService } from './student.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-students',

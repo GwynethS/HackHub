@@ -7,7 +7,6 @@ import { CoursesDialogComponent } from './components/courses-dialog/courses-dial
 import { CoursesService } from './courses.service';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 
 
 @NgModule({
@@ -15,7 +14,6 @@ import { CourseDetailComponent } from './pages/course-detail/course-detail.compo
     CoursesComponent,
     CoursesTableComponent,
     CoursesDialogComponent,
-    CourseDetailComponent,
   ],
   imports: [
     CommonModule,

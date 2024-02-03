@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CourseDetailRoutingModule } from './course-detail-routing.module';
 import { CourseDetailComponent } from './course-detail.component';
-import { CourseClassTableComponent } from './course-class-table/course-class-table.component';
 import { CourseClassDialogComponent } from './components/course-class-dialog/course-class-dialog.component';
+import { CourseClassTableComponent } from './components/course-class-table/course-class-table.component';
+import { CourseDetailRoutingModule } from './courses-detail-routing.module';
 
 
 @NgModule({
