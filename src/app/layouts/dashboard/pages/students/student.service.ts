@@ -22,6 +22,10 @@ export class StudentsService {
     );
   }
 
+  getStudentById(id: number){
+    return of(students.find((student) => student.id === id)).pipe(delay(500));
+  }
+
   createStudent(studentData: Student){
     students = [...students, {...studentData, id: students.length + 1}];
 
