@@ -7,6 +7,11 @@ let courses: Course[] = [
     id: 1,
     name: 'Python',
     teacher: 'Jorge Ramirez',
+  },
+  {
+    id: 2,
+    name: 'Java',
+    teacher: 'Carlos Perez',
   }
 ]
 
@@ -19,6 +24,10 @@ export class CoursesService {
     return of(courses).pipe(
       delay(500)
     );
+  }
+
+  getCourseById(id: number){
+    return of(courses.find((course) => course.id === id)).pipe(delay(500));
   }
 
   createCourse(courseData: Course){

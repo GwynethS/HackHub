@@ -43,5 +43,21 @@
         </div>
       </a>
     </div>
+
+    <div class="sidebar-list-item">
+      <a
+        #enrollmentLink="routerLinkActive"
+        routerLinkActive
+        [activated]="enrollmentLink.isActive"
+        routerLink="enrollment"
+        mat-list-item
+        class="sidebar-list-link"
+      >
+        <div class="sidebar-list-link-content">
+          <mat-icon class="sidebar-list-icon">assignment_add</mat-icon>
+          <span class="sidebar-link-text" *ngIf="collapsed">Inscripciones</span>
+        </div>
+      </a>
+    </div>
   </mat-nav-list>
 </div>
