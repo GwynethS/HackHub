@@ -27,7 +27,7 @@ export class EnrollmentService {
   }
 
   createEnrollment(enrollmentData: Enrollment){
-    enrollments = [...enrollments, {...enrollmentData, id: enrollments.length + 1}];
+    enrollments = [...enrollments, {...enrollmentData, id: enrollments.length + 1, enrollmentDate: new Date()}];
 
     return this.getEnrollments();
   }
@@ -39,7 +39,7 @@ export class EnrollmentService {
   }
 
   updateEnrollment(id: number, updateData: Enrollment){
-    enrollments = enrollments.map((enrollment) => enrollment.id === id ? {...enrollment, ...updateData} : enrollment);
+    enrollments = enrollments.map((enrollment) => enrollment.id === id ? {...enrollment, ...updateData, enrollmentDate: new Date()} : enrollment);
 
     return this.getEnrollments();
   }

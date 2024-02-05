@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 const materialModules = [
   MatSidenavModule,
@@ -21,7 +22,8 @@ const materialModules = [
   FormsModule,
   MatTableModule,
   MatListModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSelectModule
 ];
 
 @NgModule({

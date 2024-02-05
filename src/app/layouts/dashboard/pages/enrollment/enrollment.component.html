@@ -1,3 +1,15 @@
-<h2 appHeadline>Inscripciones</h2>
+<h2 appHeadline class="mt-4 mb-3">Inscripciones</h2>
 
+<div class="d-flex justify-content-end mb-4">
+  <button mat-flat-button color="primary" (click)="onCreateEnrollment()">
+    Añadir
+  </button>
+</div>
+
+<app-enrollment-table
+  [dataSource]="enrollments"
+  (editEnrollment)="onEditEnrollment($event)"
+  (deleteEnrollment)="onDeleteEnrollment($event)"
+>
+</app-enrollment-table>
 

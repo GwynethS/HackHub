@@ -6,7 +6,7 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
-import { StudentsService } from './student.service';
+import { StudentsService } from './students.service';
 
 
 
