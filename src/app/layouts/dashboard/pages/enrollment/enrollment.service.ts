@@ -26,6 +26,10 @@ export class EnrollmentService {
     return of(enrollments.filter((enrollments) => enrollments.courseId === courseId)).pipe(delay(500));
   }
 
+  getEnrollmentsByStudentId(studentId: number){
+    return of(enrollments.filter((enrollments) => enrollments.studentId === studentId)).pipe(delay(500));
+  }
+
   createEnrollment(enrollmentData: Enrollment){
     enrollments = [...enrollments, {...enrollmentData, id: enrollments.length + 1, enrollmentDate: new Date()}];
 

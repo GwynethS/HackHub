@@ -1,1 +1,38 @@
-<p>student-detail works!</p>
+<h2 appHeadline>
+  Estudiante: {{studentSelected | fullName}}
+</h2>
+
+<h6 class="mt-4 mb-4">Email: {{studentSelected.email}}</h6>
+
+<table mat-table [dataSource]="enrolledCourses" class="mat-elevation-z5">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let course"> {{course.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let course"> {{course.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="teacher">
+    <th mat-header-cell *matHeaderCellDef> Docente </th>
+    <td mat-cell *matCellDef="let course"> {{course.teacher}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" class="students-table-actions-column">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let student" class="students-table-actions-cells" > 
+      <button mat-flat-button color="primary" (click)="deleteEnrolledCourse(student.id)">
+        Anular inscripción
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+

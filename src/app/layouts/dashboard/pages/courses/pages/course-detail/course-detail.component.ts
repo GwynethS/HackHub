@@ -18,7 +18,7 @@ export class CourseDetailComponent {
     name: '',
     teacher: ''
   };
-  studentsInCourse: Student[] = [];
+  enrolledStudents: Student[] = [];
 
   displayedColumns = ['id', 'fullname', 'email', 'actions'];
 
@@ -37,16 +37,16 @@ export class CourseDetailComponent {
           }
         },
         complete: () => {
-          this.getUsersInCourse();
+          this.getEnrolledStudents();
         }
       });
   }
 
-  getUsersInCourse(){
+  getEnrolledStudents(){
     this.studentsService.getStudentsByCourse(this.courseSelected.id).subscribe({
       next: (students) => {
         if(students){
-          this.studentsInCourse = students;
+          this.enrolledStudents = students;
         }
       }
     })
@@ -55,6 +55,6 @@ export class CourseDetailComponent {
   deleteStudentFromCourse(studentId: number){
     this.enrollmentService.deleteEnrollmentByStudentAndCourseId(studentId, this.courseSelected.id);
 
-    this.getUsersInCourse();
+    this.getEnrolledStudents();
   }
 }

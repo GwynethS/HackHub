@@ -4,7 +4,7 @@
 
 <h6 class="mt-4 mb-4">Docente: {{courseSelected.teacher}}</h6>
 
-<table mat-table [dataSource]="studentsInCourse" class="mat-elevation-z5">
+<table mat-table [dataSource]="enrolledStudents" class="mat-elevation-z5">
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
