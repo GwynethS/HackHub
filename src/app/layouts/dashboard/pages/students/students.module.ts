@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import { StudentsService } from './students.service';
+import { EnrollmentService } from '../enrollment/enrollment.service';
 
 
 
@@ -26,7 +27,8 @@ import { StudentsService } from './students.service';
     StudentsComponent
   ],
   providers: [
-    StudentsService
+    StudentsService,
+    EnrollmentService
   ]
 })
 export class StudentsModule { }

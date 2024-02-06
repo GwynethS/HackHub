@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseDetailComponent } from './course-detail.component';
-import { CourseClassDialogComponent } from './components/course-class-dialog/course-class-dialog.component';
-import { CourseClassTableComponent } from './components/course-class-table/course-class-table.component';
 import { CourseDetailRoutingModule } from './courses-detail-routing.module';
+import { SharedModule } from '../../../../../../shared/shared.module';
+import { EnrollmentService } from '../../../enrollment/enrollment.service';
 
 
 @NgModule({
   declarations: [
     CourseDetailComponent,
-    CourseClassTableComponent,
-    CourseClassDialogComponent
   ],
   imports: [
     CommonModule,
-    CourseDetailRoutingModule
+    CourseDetailRoutingModule,
+    SharedModule
+  ],
+  providers: [
+    EnrollmentService
   ]
 })
 export class CourseDetailModule { }

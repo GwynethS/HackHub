@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { delay, finalize, of } from 'rxjs';
+import { Observable, delay, finalize, map, of } from 'rxjs';
 import { Student } from './models/student';
+import { EnrollmentService } from '../enrollment/enrollment.service';
 
 let students: Student[] = [
   {
@@ -14,7 +15,7 @@ let students: Student[] = [
 @Injectable()
 export class StudentsService {
 
-  constructor() { }
+  constructor(private enrollmentService : EnrollmentService) { }
 
   getStudents(){
     return of(students).pipe(
@@ -24,6 +25,18 @@ export class StudentsService {
 
   getStudentById(id: number){
     return of(students.find((student) => student.id === id)).pipe(delay(500));
+  }
+
+  getStudentsByCourse(courseId: number){
+    return this.enrollmentService.getEnrollmentsByCourseId(courseId).pipe(
+      map(enrollments => {
+        if (enrollments.length !== 0) {
+          return students.filter(student => enrollments.some(enrollment => enrollment.studentId === student.id));
+        } else {
+          return [];
+        }
+      })
+    );
   }
 
   createStudent(studentData: Student){

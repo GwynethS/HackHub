@@ -41,7 +41,6 @@ export class EnrollmentDialogComponent {
   }
 
   ngOnInit(){
-    console.log("page data");
     this.studentsService.getStudents().subscribe({
       next: (students) => {
         this.students = students;

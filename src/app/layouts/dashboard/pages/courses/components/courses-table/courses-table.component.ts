@@ -22,7 +22,6 @@ export class CoursesTableComponent {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   redirectToCourseDetail(courseId: number): void {
-    console.log(this.route.snapshot);
     this.router.navigate(['/dashboard/courses', 'course-detail', courseId]);
   }
 }

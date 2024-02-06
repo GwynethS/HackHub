@@ -22,8 +22,8 @@ export class EnrollmentService {
     )
   }
 
-  getEnrollmentById(id: number){
-    return of(enrollments.find((enrollment) => enrollment.id === id)).pipe(delay(500));
+  getEnrollmentsByCourseId(courseId: number){
+    return of(enrollments.filter((enrollments) => enrollments.courseId === courseId)).pipe(delay(500));
   }
 
   createEnrollment(enrollmentData: Enrollment){
@@ -36,6 +36,10 @@ export class EnrollmentService {
     enrollments = enrollments.filter((enrollment) => enrollment.id !== id);
 
     return this.getEnrollments();
+  }
+
+  deleteEnrollmentByStudentAndCourseId(studentId: number, courseId: number){
+    enrollments = enrollments.filter((enrollments) => !(enrollments.studentId === studentId && enrollments.courseId === courseId));
   }
 
   updateEnrollment(id: number, updateData: Enrollment){

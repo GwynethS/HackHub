@@ -29,7 +29,6 @@ export class EnrollmentComponent {
       .afterClosed()
       .subscribe({
         next: (enrollmentData) => {
-          console.log(enrollmentData);
           if (enrollmentData) {
             this.enrollmentService.createEnrollment(enrollmentData).subscribe({
               next: (enrollments) => {
