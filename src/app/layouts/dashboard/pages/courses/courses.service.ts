@@ -51,6 +51,7 @@ export class CoursesService {
 
   deleteCourseById(id: number){
     courses = courses.filter((course) => course.id !== id);
+    this.enrollmentService.deleteEnrollmentsByCourseId(id);
 
     return this.getCourses();
   }

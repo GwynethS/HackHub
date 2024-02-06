@@ -42,6 +42,14 @@ export class EnrollmentService {
     return this.getEnrollments();
   }
 
+  deleteEnrollmentsByCourseId(courseId: number){
+    enrollments = enrollments.filter((enrollments) => enrollments.courseId !== courseId);
+  }
+
+  deleteEnrollmentsByStudentId(studentId: number){
+    enrollments = enrollments.filter((enrollments) => enrollments.studentId !== studentId);
+  }
+
   deleteEnrollmentByStudentAndCourseId(studentId: number, courseId: number){
     enrollments = enrollments.filter((enrollments) => !(enrollments.studentId === studentId && enrollments.courseId === courseId));
   }

@@ -53,6 +53,7 @@ export class StudentsService {
 
   deleteStudentById(id: number){
     students = students.filter((student) => student.id !== id);
+    this.enrollmentService.deleteEnrollmentsByStudentId(id);
 
     return this.getStudents();
   }
