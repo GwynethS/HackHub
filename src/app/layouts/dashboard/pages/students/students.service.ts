@@ -9,6 +9,12 @@ let students: Student[] = [
     firstName: 'Gwyneth',
     lastName: 'Segura',
     email: 'gwyneth@gmail.com'
+  },
+  {
+    id: 2,
+    firstName: 'Deyvid',
+    lastName: 'Guevara',
+    email: 'deyvidguevara@gmail.com'
   }
 ]
 

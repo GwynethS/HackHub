@@ -19,7 +19,7 @@ export class CoursesTableComponent {
 
   displayedColumns = ['id', 'name', 'teacher', 'actions'];
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router) {}
 
   redirectToCourseDetail(courseId: number): void {
     this.router.navigate(['/dashboard/courses', 'course-detail', courseId]);
