@@ -12,13 +12,18 @@ const routes: Routes = [
       ),
   },
   {
-    path:'**',
-    redirectTo: 'dashboard'
-  }
+    path: 'auth',
+    loadChildren: () =>
+      import('./layouts/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
