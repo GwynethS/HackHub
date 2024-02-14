@@ -29,11 +29,11 @@ export class StudentDetailComponent {
     private route: ActivatedRoute
   ) {
     this.studentsService
-      .getStudentById(Number(this.route.snapshot.params['id']))
+      .getStudentById(this.route.snapshot.params['id'])
       .subscribe({
         next: (findedStudent) => {
-          if(findedStudent.length){
-            this.studentSelected = findedStudent[0]; 
+          if(findedStudent){
+            this.studentSelected = findedStudent; 
           }
         },
         complete: () => {

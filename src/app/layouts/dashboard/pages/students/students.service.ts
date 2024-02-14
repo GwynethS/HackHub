@@ -32,7 +32,7 @@ export class StudentsService {
   }
 
   getStudentById(id: number) {
-    return this.httpClient.get<Student[]>(
+    return this.httpClient.get<Student>(
       `${environment.apiURL}/students/${id}`
     );
   }

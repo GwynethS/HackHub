@@ -7,7 +7,8 @@ import { StudentDetailComponent } from './pages/student-detail/student-detail.co
 const routes: Routes = [
   {
     path: '',
-    component: StudentsComponent
+    component: StudentsComponent,
+    pathMatch: 'full'
   },
   // {
   //   path: 'student-detail/:id',
@@ -17,7 +18,7 @@ const routes: Routes = [
   //     )
   // },
   {
-    path: '/:id',
+    path: ':id',
     component: StudentDetailComponent
   }
 ];

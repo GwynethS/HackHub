@@ -9,6 +9,7 @@ import { StudentsDialogComponent } from './components/students-dialog/students-d
 import { StudentsService } from './students.service';
 import { EnrollmentService } from '../enrollment/enrollment.service';
 import { StudentDetailComponent } from './pages/student-detail/student-detail.component';
+import { CoursesService } from '../courses/courses.service';
 
 
 
@@ -28,8 +29,9 @@ import { StudentDetailComponent } from './pages/student-detail/student-detail.co
   exports:[
     StudentsComponent
   ],
-  providers: [
+  providers:[
     StudentsService,
+    CoursesService,
     EnrollmentService
   ]
 })
