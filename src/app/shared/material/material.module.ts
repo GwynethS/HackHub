@@ -11,6 +11,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 
 const materialModules = [
   MatSidenavModule,
@@ -23,7 +24,8 @@ const materialModules = [
   MatTableModule,
   MatListModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCardModule
 ];
 
 @NgModule({

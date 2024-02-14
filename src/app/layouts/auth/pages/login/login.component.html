@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <h2 class="login-title">Iniciar sesión</h2>
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="loginForm"
+      class="login-form grid"
+    >
+      <mat-form-field class="col-12">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput />
+        <!-- <mat-error>{{loginForm.get('email')?.errors| validationErrors}}</mat-error> -->
+      </mat-form-field>
+      <mat-form-field class="col-12">
+        <mat-label>Password</mat-label>
+        <input
+          formControlName="password"
+          matInput
+          [type]="revealPassword ? 'text' : 'password'"
+        />
+        <button
+          (click)="revealPassword = !revealPassword"
+          matSuffix
+          mat-icon-button
+          type="button"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <!-- <mat-error>{{loginForm.get('password')?.errors| validationErrors}}</mat-error> -->
+      </mat-form-field>
+      <div class="col-12 mt-4">
+        <button mat-flat-button class="btn-login" color="primary" type="submit">
+          Ingresar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
