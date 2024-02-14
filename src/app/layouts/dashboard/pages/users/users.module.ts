@@ -5,6 +5,8 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
+import { SharedModule } from '../../../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { UsersDialogComponent } from './components/users-dialog/users-dialog.com
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }

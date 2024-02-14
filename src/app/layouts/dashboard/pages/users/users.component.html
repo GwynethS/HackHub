@@ -1,1 +1,14 @@
-<p>users works!</p>
+<h2 appHeadline class="mt-4 mb-3">Usuarios</h2>
+
+<div class="d-flex justify-content-end mb-4">
+  <button mat-flat-button color="primary" (click)="onCreateUser()">
+    Añadir
+  </button>
+</div>
+
+<app-users-table
+  [dataSource]="users"
+  (editUser)="onEditUser($event)"
+  (deleteUser)="onDeleteUser($event)"
+>
+</app-users-table>
