@@ -1,22 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Course } from './models/course';
-import { delay, map, mergeMap, of } from 'rxjs';
+import { forkJoin, mergeMap, of, switchMap } from 'rxjs';
 import { EnrollmentService } from '../enrollment/enrollment.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
-
-let courses: Course[] = [
-  {
-    id: 1,
-    name: 'Python',
-    teacher: 'Jorge Ramirez',
-  },
-  {
-    id: 2,
-    name: 'Java',
-    teacher: 'Carlos Perez',
-  },
-];
 
 @Injectable()
 export class CoursesService {
@@ -35,13 +22,17 @@ export class CoursesService {
 
   getCoursesByStudent(studentId: number) {
     return this.enrollmentService.getEnrollmentsByStudentId(studentId).pipe(
-      map((enrollments) => {
-        if (enrollments.length !== 0) {
-          return courses.filter((course) =>
-            enrollments.some((enrollment) => enrollment.courseId === course.id)
+      switchMap((enrollments) => {
+        const courseIds = enrollments.map(enrollment => enrollment.courseId);
+  
+        if (courseIds.length !== 0) {
+          const requests = courseIds.map(id =>
+            this.httpClient.get<Course>(`${environment.apiURL}/courses/${id}`)
           );
+  
+          return forkJoin(requests);
         } else {
-          return [];
+          return of([]);
         }
       })
     );
@@ -54,9 +45,12 @@ export class CoursesService {
   }
 
   deleteCourseById(id: number) {
-    return this.httpClient
-      .delete<Course>(`${environment.apiURL}/courses/${id}`)
-      .pipe(mergeMap(() => this.getCourses()));
+    return this.enrollmentService.deleteEnrollmentsByCourseId(id).pipe(
+      mergeMap(() =>
+        this.httpClient.delete<Course>(`${environment.apiURL}/courses/${id}`)
+      ),
+      mergeMap(() => this.getCourses())
+    );
   }
 
   updateCourse(id: number, updateData: Course) {

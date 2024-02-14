@@ -53,8 +53,10 @@ export class CourseDetailComponent {
   }
 
   deleteStudentFromCourse(studentId: number){
-    this.enrollmentService.deleteEnrollmentByStudentAndCourseId(studentId, this.courseSelected.id);
-
-    this.getEnrolledStudents();
+    this.enrollmentService.deleteEnrollmentByStudentAndCourseId(studentId, this.courseSelected.id).subscribe({
+      next: () => {
+        this.getEnrolledStudents();
+      }
+    })
   }
 }
