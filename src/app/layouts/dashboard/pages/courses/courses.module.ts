@@ -8,6 +8,8 @@ import { CoursesService } from './courses.service';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnrollmentService } from '../enrollment/enrollment.service';
+import { StudentsService } from '../students/students.service';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 
 
 @NgModule({
@@ -15,6 +17,7 @@ import { EnrollmentService } from '../enrollment/enrollment.service';
     CoursesComponent,
     CoursesTableComponent,
     CoursesDialogComponent,
+    CourseDetailComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +28,8 @@ import { EnrollmentService } from '../enrollment/enrollment.service';
   exports:[
     CoursesComponent
   ],
-  providers:[
+  providers: [
+    StudentsService,
     CoursesService,
     EnrollmentService
   ]

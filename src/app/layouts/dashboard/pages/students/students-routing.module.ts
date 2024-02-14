@@ -10,13 +10,6 @@ const routes: Routes = [
     component: StudentsComponent,
     pathMatch: 'full'
   },
-  // {
-  //   path: 'student-detail/:id',
-  //   loadChildren: () =>
-  //     import('./pages/student-detail/student-detail.module').then(
-  //       (m) => m.StudentDetailModule
-  //     )
-  // },
   {
     path: ':id',
     component: StudentDetailComponent

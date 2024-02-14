@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoursesComponent } from './courses.component';
+import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    component: CoursesComponent
+    component: CoursesComponent,
+    pathMatch: 'full'
   },
   {
-    path: 'course-detail/:id',
-    loadChildren: () =>
-      import('./pages/course-detail/course-detail.module').then(
-        (m) => m.CourseDetailModule
-      )
+    path: ':id',
+    component: CourseDetailComponent
   }
 ];
 

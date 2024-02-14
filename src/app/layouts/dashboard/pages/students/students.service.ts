@@ -63,8 +63,6 @@ export class StudentsService {
     return this.httpClient
       .delete<Student>(`${environment.apiURL}/students/${id}`)
       .pipe(mergeMap(() => this.getStudents()));
-
-    return this.getStudents();
   }
 
   updateStudent(id: number, updateData: Student) {

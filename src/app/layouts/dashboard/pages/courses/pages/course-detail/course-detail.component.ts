@@ -29,7 +29,7 @@ export class CourseDetailComponent {
     private route: ActivatedRoute
   ) {
     this.coursesService
-      .getCourseById(Number(this.route.snapshot.params['id']))
+      .getCourseById(this.route.snapshot.params['id'])
       .subscribe({
         next: (findedCourse) => {
           if(findedCourse){
