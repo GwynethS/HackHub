@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Lyu",
+      "lastName": "Segura",
+      "email": "lyu@gmail.com",
+      "password": "123456",
+      "role": "ADMIN",
+      "token": "ksjdfhkjah"
+    },
+    {
+      "id": 2,
+      "firstName": "Jean",
+      "lastName": "Achamizo",
+      "email": "jean@gmail.com",
+      "password": "123456",
+      "role": "USER",
+      "token": "ladkajlsk"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "firstName": "Gwyneth",
+      "lastName": "Segura",
+      "email": "gwyneth@gmail.com"
+    },
+    {
+      "id": 2,
+      "firstName": "Deyvid",
+      "lastName": "Guevara",
+      "email": "deyvidguevara@gmail.com"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Python",
+      "teacher": "Jorge Ramirez"
+    },
+    {
+      "id": 2,
+      "name": "Java",
+      "teacher": "Carlos Perez"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "studentId": 1,
+      "courseId": 1,
+      "enrollmentDate": "2024-02-13T12:34:56.789Z"
+    }
+  ]
+}
