@@ -14,6 +14,38 @@
   <mat-nav-list class="sidebar-list">
     <div class="sidebar-list-item">
       <a
+        #homeLink="routerLinkActive"
+        routerLinkActive
+        [activated]="homeLink.isActive"
+        routerLink="home"
+        mat-list-item
+        class="sidebar-list-link"
+      >
+        <div class="sidebar-list-link-content">
+          <mat-icon class="sidebar-list-icon">home</mat-icon>
+          <span class="sidebar-link-text" *ngIf="collapsed">Inicio</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-list-item">
+      <a
+        #usersLink="routerLinkActive"
+        routerLinkActive
+        [activated]="usersLink.isActive"
+        routerLink="users"
+        mat-list-item
+        class="sidebar-list-link"
+      >
+        <div class="sidebar-list-link-content">
+          <mat-icon class="sidebar-list-icon">person</mat-icon>
+          <span class="sidebar-link-text" *ngIf="collapsed">Usuarios</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-list-item">
+      <a
         #studentsLink="routerLinkActive"
         routerLinkActive
         [activated]="studentsLink.isActive"
@@ -56,6 +88,22 @@
         <div class="sidebar-list-link-content">
           <mat-icon class="sidebar-list-icon">assignment_add</mat-icon>
           <span class="sidebar-link-text" *ngIf="collapsed">Inscripciones</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-list-item">
+      <a
+        #loginLink="routerLinkActive"
+        routerLinkActive
+        [activated]="loginLink.isActive"
+        routerLink="/auth/login"
+        mat-list-item
+        class="sidebar-list-link"
+      >
+        <div class="sidebar-list-link-content">
+          <mat-icon class="sidebar-list-icon">logout</mat-icon>
+          <span class="sidebar-link-text" *ngIf="collapsed">Cerrar sesión</span>
         </div>
       </a>
     </div>
