@@ -21,10 +21,10 @@
       <button mat-icon-button (click)="redirectToCourseDetail(course.id)" >
         <mat-icon>visibility</mat-icon>
       </button> 
-      <button mat-icon-button (click)="editCourse.emit(course)">
+      <button *ngIf="authUser?.role === 'ADMIN'" mat-icon-button (click)="editCourse.emit(course)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="deleteCourse.emit(course.id)">
+      <button *ngIf="authUser?.role === 'ADMIN'" mat-icon-button (click)="deleteCourse.emit(course.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

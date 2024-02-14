@@ -21,10 +21,10 @@
       <button mat-icon-button (click)="redirectToStudentDetail(student.id)" >
         <mat-icon>visibility</mat-icon>
       </button> 
-      <button mat-icon-button (click)="editStudent.emit(student)">
+      <button *ngIf="authUser?.role === 'ADMIN'" mat-icon-button (click)="editStudent.emit(student)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="deleteStudent.emit(student.id)">
+      <button *ngIf="authUser?.role === 'ADMIN'" mat-icon-button (click)="deleteStudent.emit(student.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

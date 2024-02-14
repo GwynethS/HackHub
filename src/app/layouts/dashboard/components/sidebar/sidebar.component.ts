@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../../auth/auth.service';
+import { User } from '../../pages/users/models/user';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,11 +9,16 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class SidebarComponent {
   collapsed = false;
+  authUser: User | null = null;
 
   @Output()
     collapsedChange = new EventEmitter<boolean>();
 
-  constructor(private authService : AuthService){}
+  constructor(private authService : AuthService){
+    if(authService.authUser){
+      this.authUser = authService.authUser;
+    }
+  }
 
   toogleCollapse(){
     this.collapsed = !this.collapsed;
