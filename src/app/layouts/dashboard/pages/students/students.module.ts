@@ -8,6 +8,7 @@ import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import { StudentsService } from './students.service';
 import { EnrollmentService } from '../enrollment/enrollment.service';
+import { StudentDetailComponent } from './pages/student-detail/student-detail.component';
 
 
 
@@ -15,7 +16,8 @@ import { EnrollmentService } from '../enrollment/enrollment.service';
   declarations: [
     StudentsComponent,
     StudentsTableComponent,
-    StudentsDialogComponent
+    StudentsDialogComponent,
+    StudentDetailComponent
   ],
   imports: [
     CommonModule,

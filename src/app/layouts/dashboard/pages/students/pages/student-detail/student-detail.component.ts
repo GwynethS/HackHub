@@ -32,8 +32,8 @@ export class StudentDetailComponent {
       .getStudentById(Number(this.route.snapshot.params['id']))
       .subscribe({
         next: (findedStudent) => {
-          if(findedStudent){
-            this.studentSelected = findedStudent; 
+          if(findedStudent.length){
+            this.studentSelected = findedStudent[0]; 
           }
         },
         complete: () => {

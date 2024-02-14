@@ -30,6 +30,6 @@ export class StudentsTableComponent {
   }
 
   redirectToStudentDetail(studentId: number): void {
-    this.router.navigate(['/dashboard/students', 'student-detail', studentId]);
+    this.router.navigate(['/dashboard/students', studentId]);
   }
 }
