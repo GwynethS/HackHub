@@ -16,51 +16,51 @@ export class UsersComponent {
     private usersService: UsersService,
     public dialog: MatDialog,
   ) {
-    // this.usersService.getUsers().subscribe({
-    //   next: (users) => {
-    //     this.users = users;
-    //   },
-    // });
+    this.usersService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+      },
+    });
   }
 
   onCreateUser(): void {
-    // this.dialog
-    //   .open(UsersDialogComponent)
-    //   .afterClosed()
-    //   .subscribe({
-    //     next: (userData) => {
-    //       if (userData) {
-    //         this.usersService.createUser(userData).subscribe({
-    //           next: (users) => {
-    //             this.users = users;
-    //           },
-    //         });
-    //       }
-    //     },
-    //   });
+    this.dialog
+      .open(UsersDialogComponent)
+      .afterClosed()
+      .subscribe({
+        next: (userData) => {
+          if (userData) {
+            this.usersService.createUser(userData).subscribe({
+              next: (users) => {
+                this.users = users;
+              },
+            });
+          }
+        },
+      });
   }
 
   onEditUser(ev: User) {
-    // this.dialog.open(UserDialogComponent, {
-    //   data: ev
-    // }).afterClosed().subscribe({
-    //   next: (userData) => {
-    //     if(userData){
-    //       this.usersService.updateUser(ev.id, userData).subscribe({
-    //         next: (users) => {
-    //           this.users = users;
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+    this.dialog.open(UsersDialogComponent, {
+      data: ev
+    }).afterClosed().subscribe({
+      next: (userData) => {
+        if(userData){
+          this.usersService.updateUser(ev.id, userData).subscribe({
+            next: (users) => {
+              this.users = users;
+            }
+          })
+        }
+      }
+    })
   }
 
   onDeleteUser(id: number): void {
-    // this.usersService.deleteUserById(id).subscribe({
-    //   next: (users) => {
-    //     this.users = users;
-    //   }
-    // });
+    this.usersService.deleteUserById(id).subscribe({
+      next: (users) => {
+        this.users = users;
+      }
+    });
   }
 }

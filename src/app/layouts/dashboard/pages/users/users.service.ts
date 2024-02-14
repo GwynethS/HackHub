@@ -9,7 +9,7 @@ let users: User[] = [
     lastName: 'Segura',
     email: 'lyu@gmail.com',
     password: '123456',
-    rol: 'ADMIN',
+    role: 'ADMIN',
     token: 'ksjdfhkjah'
   },
   {
@@ -18,7 +18,7 @@ let users: User[] = [
     lastName: 'Achamizo',
     email: 'jean@gmail.com',
     password: '123456',
-    rol: 'USER',
+    role: 'USER',
     token: 'ladkajlsk'
   }
 ]
