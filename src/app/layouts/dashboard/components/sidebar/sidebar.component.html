@@ -94,10 +94,7 @@
 
     <div class="sidebar-list-item">
       <a
-        #loginLink="routerLinkActive"
-        routerLinkActive
-        [activated]="loginLink.isActive"
-        routerLink="/auth/login"
+        (click)="logOut()"
         mat-list-item
         class="sidebar-list-link"
       >

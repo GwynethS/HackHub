@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,11 +12,17 @@ export class SidebarComponent {
   @Output()
     collapsedChange = new EventEmitter<boolean>();
 
+  constructor(private authService : AuthService){}
+
   toogleCollapse(){
     this.collapsed = !this.collapsed;
   }
 
   closeSidebar(){
     this.collapsed = false;
+  }
+
+  logOut(){
+    this.authService.logOut();
   }
 }
