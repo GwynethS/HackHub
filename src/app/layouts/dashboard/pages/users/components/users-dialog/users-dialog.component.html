@@ -29,7 +29,15 @@
       <div class="row">
         <mat-form-field class="col-12">
           <mat-label>Contraseña</mat-label>
-          <input formControlName="password" matInput type="text" />
+          <input formControlName="password" matInput [type]="revealPassword ? 'text' : 'password'"/>
+          <button
+          (click)="revealPassword = !revealPassword"
+          matSuffix
+          mat-icon-button
+          type="button"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
         </mat-form-field>
       </div>
       <div class="row">

@@ -11,6 +11,8 @@ import { User } from '../../models/user';
 export class UsersDialogComponent {
   userForm: FormGroup;
   roles = ['ADMIN', 'USER'];
+  revealPassword = false;
+  
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<UsersDialogComponent>,
