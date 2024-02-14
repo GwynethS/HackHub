@@ -7,6 +7,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersService } from './users.service';
 
 
 @NgModule({
@@ -20,6 +21,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsersRoutingModule,
     SharedModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    UsersService
   ]
 })
 export class UsersModule { }
