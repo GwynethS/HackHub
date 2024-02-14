@@ -8,6 +8,8 @@ import { EnrollmentTableComponent } from './components/enrollment-table/enrollme
 import { EnrollmentDialogComponent } from './components/enrollment-dialog/enrollment-dialog.component';
 import { EnrollmentService } from './enrollment.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudentsService } from '../students/students.service';
+import { CoursesService } from '../courses/courses.service';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
+    StudentsService,
+    CoursesService,
     EnrollmentService
   ]
 })

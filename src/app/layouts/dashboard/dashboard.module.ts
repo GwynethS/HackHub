@@ -17,8 +17,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    StudentsModule,
-    CoursesModule,
     DashboardRoutingModule
   ],
   exports:[

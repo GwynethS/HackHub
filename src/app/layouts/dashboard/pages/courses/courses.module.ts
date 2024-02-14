@@ -7,6 +7,7 @@ import { CoursesDialogComponent } from './components/courses-dialog/courses-dial
 import { CoursesService } from './courses.service';
 import { SharedModule } from '../../../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EnrollmentService } from '../enrollment/enrollment.service';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoursesComponent
   ],
   providers:[
-    CoursesService
+    CoursesService,
+    EnrollmentService
   ]
 })
 export class CoursesModule { }
