@@ -14,8 +14,10 @@ export class StudentsComponent {
 
   constructor(
     private studentService: StudentsService,
-    public dialog: MatDialog,
-  ) {
+    public dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {
     this.studentService.getStudents().subscribe({
       next: (students) => {
         this.students = students;
@@ -41,26 +43,29 @@ export class StudentsComponent {
   }
 
   onEditStudent(ev: Student) {
-    this.dialog.open(StudentsDialogComponent, {
-      data: ev
-    }).afterClosed().subscribe({
-      next: (studentData) => {
-        if(studentData){
-          this.studentService.updateStudent(ev.id, studentData).subscribe({
-            next: (students) => {
-              this.students = students;
-            }
-          })
-        }
-      }
-    })
+    this.dialog
+      .open(StudentsDialogComponent, {
+        data: ev,
+      })
+      .afterClosed()
+      .subscribe({
+        next: (studentData) => {
+          if (studentData) {
+            this.studentService.updateStudent(ev.id, studentData).subscribe({
+              next: (students) => {
+                this.students = students;
+              },
+            });
+          }
+        },
+      });
   }
 
   onDeleteStudent(id: number): void {
     this.studentService.deleteStudentById(id).subscribe({
       next: (students) => {
         this.students = students;
-      }
+      },
     });
   }
 }

@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
+import { SharedModule } from '../../../../shared/shared.module';
+import { MockProvider } from 'ng-mocks';
+import { UsersService } from './users.service';
+import { UsersTableComponent } from './components/users-table/users-table.component';
+import { AuthService } from '../../../auth/auth.service';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
-  let fixture: ComponentFixture<UsersComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [UsersComponent]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [UsersComponent, UsersTableComponent],
+      imports: [SharedModule],
+      providers: [MockProvider(UsersService), MockProvider(AuthService)]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(UsersComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.createComponent(UsersComponent).componentInstance;
   });
 
-  it('should create', () => {
+  it('UsersComponent debe estar definido', () => {
     expect(component).toBeTruthy();
   });
 });

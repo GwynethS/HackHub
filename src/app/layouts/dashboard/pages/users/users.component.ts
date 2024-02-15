@@ -7,15 +7,14 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+  styleUrl: './users.component.scss',
 })
 export class UsersComponent {
   users: User[] = [];
 
-  constructor(
-    private usersService: UsersService,
-    public dialog: MatDialog,
-  ) {
+  constructor(private usersService: UsersService, public dialog: MatDialog) {}
+
+  ngOnInit(): void {
     this.usersService.getUsers().subscribe({
       next: (users) => {
         this.users = users;
@@ -41,26 +40,29 @@ export class UsersComponent {
   }
 
   onEditUser(ev: User) {
-    this.dialog.open(UsersDialogComponent, {
-      data: ev
-    }).afterClosed().subscribe({
-      next: (userData) => {
-        if(userData){
-          this.usersService.updateUser(ev.id, userData).subscribe({
-            next: (users) => {
-              this.users = users;
-            }
-          })
-        }
-      }
-    })
+    this.dialog
+      .open(UsersDialogComponent, {
+        data: ev,
+      })
+      .afterClosed()
+      .subscribe({
+        next: (userData) => {
+          if (userData) {
+            this.usersService.updateUser(ev.id, userData).subscribe({
+              next: (users) => {
+                this.users = users;
+              },
+            });
+          }
+        },
+      });
   }
 
   onDeleteUser(id: number): void {
     this.usersService.deleteUserById(id).subscribe({
       next: (users) => {
         this.users = users;
-      }
+      },
     });
   }
 }
