@@ -24,4 +24,10 @@ describe('UsersComponent', () => {
   it('UsersComponent debe estar definido', () => {
     expect(component).toBeTruthy();
   });
+
+  it('El componente debe cargar la lista de usuarios', () => {
+    const spyOnNgOnInit = spyOn(component, 'ngOnInit');
+    component.ngOnInit();
+    expect(spyOnNgOnInit).toHaveBeenCalled();
+  });
 });
