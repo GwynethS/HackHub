@@ -1,23 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { UsersTableComponent } from './users-table.component';
+import { SharedModule } from '../../../../../../shared/shared.module';
 
 describe('UsersTableComponent', () => {
   let component: UsersTableComponent;
-  let fixture: ComponentFixture<UsersTableComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [UsersTableComponent]
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [SharedModule],
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(UsersTableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.createComponent(UsersTableComponent).componentInstance;
   });
 
-  it('should create', () => {
+  it('UsersTableComponent debe estar definido', () => {
     expect(component).toBeTruthy();
   });
 });
