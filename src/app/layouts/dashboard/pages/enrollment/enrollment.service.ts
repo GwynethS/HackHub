@@ -19,7 +19,7 @@ export class EnrollmentService {
 
   getEnrollments() {
     return this.httpClient.get<Enrollment[]>(
-      `${environment.apiURL}/enrollments`
+      `${environment.apiURL}/enrollments?_embed=student&_embed=course`
     );
   }
 

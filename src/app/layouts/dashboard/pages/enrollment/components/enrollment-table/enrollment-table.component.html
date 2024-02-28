@@ -10,9 +10,19 @@
     <td mat-cell *matCellDef="let enrollment"> {{enrollment.studentId}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="studentFullName">
+    <th mat-header-cell *matHeaderCellDef> Estudiante</th>
+    <td mat-cell *matCellDef="let enrollment"> {{enrollment.student | fullName}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="courseId">
     <th mat-header-cell *matHeaderCellDef> Curso ID </th>
     <td mat-cell *matCellDef="let enrollment"> {{enrollment.courseId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="courseName">
+    <th mat-header-cell *matHeaderCellDef> Curso </th>
+    <td mat-cell *matCellDef="let enrollment"> {{enrollment.course.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="enrollmentDate">
