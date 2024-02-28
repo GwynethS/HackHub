@@ -4,3 +4,8 @@ export interface Enrollment{
   courseId: number,
   enrollmentDate: Date
 }
+
+export interface CreateEnrollmentData{
+  studentId: number,
+  courseId: number,
+}

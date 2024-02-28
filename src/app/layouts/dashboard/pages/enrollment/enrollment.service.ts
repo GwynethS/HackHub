@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Enrollment } from './models/enrollment';
-import { forkJoin, from, mapTo, mergeAll, mergeMap, of, switchMap } from 'rxjs';
+import { CreateEnrollmentData, Enrollment } from './models/enrollment';
+import { Observable, forkJoin, from, mapTo, mergeAll, mergeMap, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
@@ -26,13 +26,13 @@ export class EnrollmentService {
     );
   }
 
-  createEnrollment(enrollmentData: Enrollment) {
+  createEnrollment(enrollmentData: CreateEnrollmentData) {
     return this.httpClient
       .post<Enrollment>(`${environment.apiURL}/enrollments`, {
         ...enrollmentData,
         enrollmentDate: new Date(),
       })
-      .pipe(mergeMap(() => this.getEnrollments()));
+      // .pipe(mergeMap(() => this.getEnrollments()));
   }
 
   deleteEnrollmentById(id: number) {
