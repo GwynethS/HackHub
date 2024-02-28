@@ -10,6 +10,8 @@ import { EnrollmentService } from './enrollment.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsService } from '../students/students.service';
 import { CoursesService } from '../courses/courses.service';
+import { EffectsModule } from '@ngrx/effects';
+import { EnrollmentEffects } from './store/enrollment.effects';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { CoursesService } from '../courses/courses.service';
     CommonModule,
     EnrollmentRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EffectsModule.forFeature([EnrollmentEffects])
   ],
   providers: [
     StudentsService,
