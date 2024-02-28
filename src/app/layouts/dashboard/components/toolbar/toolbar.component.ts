@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { User } from '../../pages/users/models/user';
-import { AuthService } from '../../../auth/auth.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectAuthUser } from '../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.scss'
+  styleUrl: './toolbar.component.scss',
 })
 export class ToolbarComponent {
-  authUser: User | null = null;
+  authUser$: Observable<User | null>;
 
-  constructor(private authService : AuthService){
-    if(authService.authUser){
-      this.authUser = authService.authUser;
-    }
+  constructor(private store: Store) {
+    this.authUser$ = this.store.select(selectAuthUser);
   }
 }

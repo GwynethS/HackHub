@@ -3,6 +3,9 @@ import { Student } from '../../models/student';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../../auth/auth.service';
 import { User } from '../../../users/models/user';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectAuthUser } from '../../../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-students-table',
@@ -21,12 +24,10 @@ export class StudentsTableComponent {
 
   displayedColumns = ['id', 'fullname', 'email', 'actions'];
 
-  authUser: User | null = null;
+  authUser$: Observable<User | null>;
 
-  constructor(private router: Router, private authService: AuthService) {
-    if (authService.authUser) {
-      this.authUser = authService.authUser;
-    }
+  constructor(private router: Router, private store: Store) {
+    this.authUser$ = this.store.select(selectAuthUser);
   }
 
   redirectToStudentDetail(studentId: number): void {

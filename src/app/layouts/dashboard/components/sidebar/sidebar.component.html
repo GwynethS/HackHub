@@ -28,7 +28,7 @@
       </a>
     </div>
 
-    <div *ngIf="authUser?.role === 'ADMIN'" class="sidebar-list-item">
+    <div *ngIf="(authUser$ | async)?.role === 'ADMIN'" class="sidebar-list-item">
       <a
         #usersLink="routerLinkActive"
         routerLinkActive

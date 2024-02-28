@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../dashboard/pages/users/models/user';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { Store } from '@ngrx/store';
+import { AuthAction } from '../../core/store/auth/actions';
 
 interface LoginData {
   email: null | string;
@@ -15,10 +17,15 @@ interface LoginData {
 })
 export class AuthService {
   authUser: User | null = null;
-  constructor(private router: Router, private httpClient: HttpClient) {}
+  constructor(
+    private router: Router,
+    private httpClient: HttpClient,
+    private store: Store
+  ) {}
 
   private setAuthUser(user: User): void {
-    this.authUser = user;
+    // this.authUser = user;
+    this.store.dispatch(AuthAction.setAuthUser({ user }));
     localStorage.setItem('token', user.token);
   }
 
@@ -40,7 +47,8 @@ export class AuthService {
   }
 
   logOut(): void {
-    this.authUser = null;
+    // this.authUser = null;
+    this.store.dispatch(AuthAction.logout());
     this.router.navigate(['auth', 'login']);
     localStorage.removeItem('token');
   }
@@ -56,11 +64,13 @@ export class AuthService {
             this.setAuthUser(response[0]);
             return true;
           } else {
-            this.authUser = null;
+            // this.authUser = null;
+            this.store.dispatch(AuthAction.logout());
             localStorage.removeItem('token');
             return false;
           }
-        })
+        }),
+        catchError(() => of(false))
       );
   }
 }

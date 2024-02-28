@@ -1,6 +1,6 @@
 <mat-toolbar class="toolbar">
     <div class="user-data">
-        <span class="user-name">{{authUser | fullName}}</span>
+        <span *ngIf="authUser$ | async let user" class="user-name">{{user | fullName}}</span>
         <mat-icon class="user-icon">
             account_circle
         </mat-icon>

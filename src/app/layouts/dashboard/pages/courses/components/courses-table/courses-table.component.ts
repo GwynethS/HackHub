@@ -3,6 +3,9 @@ import { Course } from '../../models/course';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../../users/models/user';
 import { AuthService } from '../../../../../auth/auth.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectAuthUser } from '../../../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-courses-table',
@@ -21,12 +24,10 @@ export class CoursesTableComponent {
 
   displayedColumns = ['id', 'name', 'teacher', 'actions'];
 
-  authUser: User | null = null;
+  authUser$: Observable<User | null>;
 
-  constructor(private router: Router, private authService : AuthService) {
-    if(authService.authUser){
-      this.authUser = authService.authUser;
-    }
+  constructor(private router: Router, private store: Store) {
+    this.authUser$ = this.store.select(selectAuthUser);
   }
 
   redirectToCourseDetail(courseId: number): void {

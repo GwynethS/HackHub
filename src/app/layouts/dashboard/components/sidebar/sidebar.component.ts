@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../../auth/auth.service';
 import { User } from '../../pages/users/models/user';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectAuthUser } from '../../../../core/store/auth/selectors';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,15 +12,13 @@ import { User } from '../../pages/users/models/user';
 })
 export class SidebarComponent {
   collapsed = false;
-  authUser: User | null = null;
+  authUser$: Observable<User | null>;
 
   @Output()
     collapsedChange = new EventEmitter<boolean>();
 
-  constructor(private authService : AuthService){
-    if(authService.authUser){
-      this.authUser = authService.authUser;
-    }
+  constructor(private authService : AuthService, private store: Store){
+    this.authUser$ = this.store.select(selectAuthUser);
   }
 
   toogleCollapse(){
