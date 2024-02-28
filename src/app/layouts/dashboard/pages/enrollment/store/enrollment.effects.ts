@@ -69,6 +69,46 @@ export class EnrollmentEffects {
     );
   });
 
+  updateEnrollment$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(EnrollmentActions.updateEnrollment),
+      concatMap((action) =>
+        this.enrollmentService.updateEnrollment(action.id, action.data).pipe(
+          map(data => EnrollmentActions.updateEnrollmentSuccess({ data })),
+          catchError(error => of(EnrollmentActions.updateEnrollmentFailure({ error }))))
+      )
+    );
+  });
+
+  updateEnrollmentSucess$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(EnrollmentActions.updateEnrollmentSuccess),
+      map(() => EnrollmentActions.loadEnrollments())
+    );
+  });
+
+  deleteEnrollment$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(EnrollmentActions.deleteEnrollment),
+      concatMap((action) =>
+        this.enrollmentService.deleteEnrollmentById(action.id).pipe(
+          map(data => EnrollmentActions.updateEnrollmentSuccess({ data })),
+          catchError(error => of(EnrollmentActions.updateEnrollmentFailure({ error }))))
+      )
+    );
+  });
+
+  deleteEnrollmentSucess$ = createEffect(() => {
+    return this.actions$.pipe(
+
+      ofType(EnrollmentActions.updateEnrollmentSuccess),
+      map(() => EnrollmentActions.loadEnrollments())
+    );
+  });
+
   constructor(
     private actions$: Actions,
     private enrollmentService: EnrollmentService,

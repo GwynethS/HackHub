@@ -20,7 +20,7 @@ export class CoursesTableComponent {
   editCourse = new EventEmitter<Course>();
 
   @Output()
-  deleteCourse = new EventEmitter<number>();
+  deleteCourse = new EventEmitter<string>();
 
   displayedColumns = ['id', 'name', 'teacher', 'actions'];
 

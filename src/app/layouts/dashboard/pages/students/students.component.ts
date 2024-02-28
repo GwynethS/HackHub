@@ -61,7 +61,7 @@ export class StudentsComponent {
       });
   }
 
-  onDeleteStudent(id: number): void {
+  onDeleteStudent(id: string): void {
     this.studentService.deleteStudentById(id).subscribe({
       next: (students) => {
         this.students = students;

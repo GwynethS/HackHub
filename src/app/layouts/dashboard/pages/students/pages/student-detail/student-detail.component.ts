@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudentDetailComponent {
   studentSelected : Student = {
-    id: 0,
+    id: '',
     firstName: '',
     lastName: '',
     email: ''
@@ -52,7 +52,7 @@ export class StudentDetailComponent {
     })
   }
 
-  deleteEnrolledCourse(courseId: number){
+  deleteEnrolledCourse(courseId: string){
     this.enrollmentService.deleteEnrollmentByStudentAndCourseId(this.studentSelected.id, courseId);
 
     this.getEnrolledCourses();

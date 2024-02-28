@@ -58,7 +58,7 @@ export class UsersComponent {
       });
   }
 
-  onDeleteUser(id: number): void {
+  onDeleteUser(id: string): void {
     this.usersService.deleteUserById(id).subscribe({
       next: (users) => {
         this.users = users;

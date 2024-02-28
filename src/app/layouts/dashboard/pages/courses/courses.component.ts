@@ -53,7 +53,7 @@ export class CoursesComponent {
     })
   }
 
-  onDeleteCourse(id: number): void {
+  onDeleteCourse(id: string): void {
     this.courseService.deleteCourseById(id).subscribe({
       next: (courses) => {
         this.courses = courses;

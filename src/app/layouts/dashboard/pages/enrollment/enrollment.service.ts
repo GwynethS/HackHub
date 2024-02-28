@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { CreateEnrollmentData, Enrollment } from './models/enrollment';
-import { Observable, forkJoin, from, mapTo, mergeAll, mergeMap, of, switchMap } from 'rxjs';
+import {
+  Observable,
+  forkJoin,
+  from,
+  mapTo,
+  mergeAll,
+  mergeMap,
+  of,
+  switchMap,
+} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
@@ -14,34 +23,36 @@ export class EnrollmentService {
     );
   }
 
-  getEnrollmentsByCourseId(courseId: number) {
+  getEnrollmentsByCourseId(courseId: string) {
     return this.httpClient.get<Enrollment[]>(
       `${environment.apiURL}/enrollments?courseId=${courseId}`
     );
   }
 
-  getEnrollmentsByStudentId(studentId: number) {
+  getEnrollmentsByStudentId(studentId: string) {
     return this.httpClient.get<Enrollment[]>(
       `${environment.apiURL}/enrollments?studentId=${studentId}`
     );
   }
 
   createEnrollment(enrollmentData: CreateEnrollmentData) {
-    return this.httpClient
-      .post<Enrollment>(`${environment.apiURL}/enrollments`, {
+    return this.httpClient.post<Enrollment>(
+      `${environment.apiURL}/enrollments`,
+      {
         ...enrollmentData,
         enrollmentDate: new Date(),
-      })
-      // .pipe(mergeMap(() => this.getEnrollments()));
+      }
+    );
+    // .pipe(mergeMap(() => this.getEnrollments()));
   }
 
-  deleteEnrollmentById(id: number) {
-    return this.httpClient
-      .delete<Enrollment>(`${environment.apiURL}/enrollments/${id}`)
-      .pipe(mergeMap(() => this.getEnrollments()));
+  deleteEnrollmentById(id: string) {
+    return this.httpClient.delete<Enrollment>(
+      `${environment.apiURL}/enrollments/${id}`
+    );
   }
 
-  deleteEnrollmentsByCourseId(courseId: number) {
+  deleteEnrollmentsByCourseId(courseId: string) {
     return this.getEnrollmentsByCourseId(courseId).pipe(
       mergeMap((enrollments) => {
         if (enrollments.length) {
@@ -57,7 +68,7 @@ export class EnrollmentService {
     );
   }
 
-  deleteEnrollmentsByStudentId(studentId: number) {
+  deleteEnrollmentsByStudentId(studentId: string) {
     return this.getEnrollmentsByStudentId(studentId).pipe(
       mergeMap((enrollments) => {
         if (enrollments.length) {
@@ -73,7 +84,7 @@ export class EnrollmentService {
     );
   }
 
-  deleteEnrollmentByStudentAndCourseId(studentId: number, courseId: number) {
+  deleteEnrollmentByStudentAndCourseId(studentId: string, courseId: string) {
     return this.httpClient
       .get<Enrollment[]>(
         `${environment.apiURL}/enrollments?studentId=${studentId}&courseId=${courseId}`
@@ -92,12 +103,13 @@ export class EnrollmentService {
       );
   }
 
-  updateEnrollment(id: number, updateData: Enrollment) {
-    return this.httpClient
-      .put<Enrollment>(`${environment.apiURL}/enrollments/${id}`, {
+  updateEnrollment(id: string, updateData: CreateEnrollmentData) {
+    return this.httpClient.put<Enrollment>(
+      `${environment.apiURL}/enrollments/${id}`,
+      {
         ...updateData,
         enrollmentDate: new Date(),
-      })
-      .pipe(mergeMap(() => this.getEnrollments()));
+      }
+    );
   }
 }

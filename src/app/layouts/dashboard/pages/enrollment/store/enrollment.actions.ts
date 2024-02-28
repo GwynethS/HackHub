@@ -21,5 +21,13 @@ export const EnrollmentActions = createActionGroup({
     'Create Enrollment': props<{ data: CreateEnrollmentData }>(),
     'Create Enrollment Success': props<{ data: Enrollment }>(),
     'Create Enrollment Failure': props<{ error: unknown }>(),
+
+    'Update Enrollment': props<{ id: string, data: CreateEnrollmentData }>(),
+    'Update Enrollment Success': props<{ data: Enrollment }>(),
+    'Update Enrollment Failure': props<{ error: unknown }>(),
+
+    'Delete Enrollment': props<{ id: string}>(),
+    'Delete Enrollment Success': props<{ data: Enrollment }>(),
+    'Delete Enrollment Failure': props<{ error: unknown }>(),
   }
 });

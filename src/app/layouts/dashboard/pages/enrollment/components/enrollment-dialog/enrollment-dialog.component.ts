@@ -42,8 +42,8 @@ export class EnrollmentDialogComponent {
       courseId: this.fb.control('', [Validators.required]),
     });
 
-    if (editingEnrollment) {
-      this.enrollmentForm.patchValue(editingEnrollment);
+    if (this.editingEnrollment) {
+      this.enrollmentForm.patchValue(this.editingEnrollment);
     }
 
     this.store.dispatch(EnrollmentActions.loadStudents());
@@ -71,9 +71,20 @@ export class EnrollmentDialogComponent {
       this.enrollmentForm.markAllAsTouched();
     } else {
       // this.dialogRef.close(this.enrollmentForm.value);
-      this.store.dispatch(
-        EnrollmentActions.createEnrollment({ data: this.enrollmentForm.value })
-      );
+      if (this.editingEnrollment) {
+        this.store.dispatch(
+          EnrollmentActions.updateEnrollment({
+            id: this.editingEnrollment.id,
+            data: this.enrollmentForm.value,
+          })
+        );
+      } else {
+        this.store.dispatch(
+          EnrollmentActions.createEnrollment({
+            data: this.enrollmentForm.value,
+          })
+        );
+      }
       this.dialogRef.close();
     }
   }

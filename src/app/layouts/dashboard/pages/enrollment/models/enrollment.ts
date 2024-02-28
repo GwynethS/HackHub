@@ -1,11 +1,11 @@
 export interface Enrollment{
-  id: number,
-  studentId: number,
-  courseId: number,
+  id: string,
+  studentId: string,
+  courseId: string,
   enrollmentDate: Date
 }
 
 export interface CreateEnrollmentData{
-  studentId: number,
-  courseId: number,
+  studentId: string,
+  courseId: string,
 }

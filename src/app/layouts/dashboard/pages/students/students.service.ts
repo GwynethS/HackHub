@@ -16,11 +16,11 @@ export class StudentsService {
     return this.httpClient.get<Student[]>(`${environment.apiURL}/students`);
   }
 
-  getStudentById(id: number) {
+  getStudentById(id: string) {
     return this.httpClient.get<Student>(`${environment.apiURL}/students/${id}`);
   }
 
-  getStudentsByCourse(courseId: number) {
+  getStudentsByCourse(courseId: string) {
     return this.enrollmentService.getEnrollmentsByCourseId(courseId).pipe(
       switchMap((enrollments) => {
         const studentIds = enrollments.map(
@@ -46,7 +46,7 @@ export class StudentsService {
       .pipe(mergeMap(() => this.getStudents()));
   }
 
-  deleteStudentById(id: number) {
+  deleteStudentById(id: string) {
     return this.enrollmentService.deleteEnrollmentsByStudentId(id).pipe(
       mergeMap(() =>
         this.httpClient.delete<Student>(`${environment.apiURL}/students/${id}`)
@@ -55,7 +55,7 @@ export class StudentsService {
     );
   }
 
-  updateStudent(id: number, updateData: Student) {
+  updateStudent(id: string, updateData: Student) {
     return this.httpClient
       .put<Student>(`${environment.apiURL}/students/${id}`, updateData)
       .pipe(mergeMap(() => this.getStudents()));

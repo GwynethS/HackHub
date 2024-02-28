@@ -67,14 +67,18 @@ export class EnrollmentComponent implements OnDestroy {
     //     }
     //   }
     // })
+    this.dialog.open(EnrollmentDialogComponent, {
+      data: ev,
+    });
   }
 
-  onDeleteEnrollment(id: number): void {
+  onDeleteEnrollment(id: string): void {
     // this.enrollmentService.deleteEnrollmentById(id).subscribe({
     //   next: (enrollments) => {
     //     this.enrollments = enrollments;
     //   }
     // });
+    this.store.dispatch(EnrollmentActions.deleteEnrollment({id}));
   }
 
   ngOnDestroy(): void {

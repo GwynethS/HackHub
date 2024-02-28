@@ -17,7 +17,7 @@ export class EnrollmentTableComponent {
     editEnrollment = new EventEmitter<Enrollment>();
 
   @Output()
-    deleteEnrollment = new EventEmitter<number>();
+    deleteEnrollment = new EventEmitter<string>();
 
   displayedColumns = ['id', 'studentId', 'courseId', 'enrollmentDate', 'actions'];
 }

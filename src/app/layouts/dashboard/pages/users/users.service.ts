@@ -24,7 +24,7 @@ export class UsersService {
     return this.httpClient.get<User[]>(`${environment.apiURL}/users`);
   }
 
-  getUserById(id: number): Observable<User | undefined> {
+  getUserById(id: string): Observable<User | undefined> {
     return this.httpClient.get<User>(`${environment.apiURL}/users/${id}`);
   }
 
@@ -37,13 +37,13 @@ export class UsersService {
       .pipe(mergeMap(() => this.getUsers()));
   }
 
-  deleteUserById(id: number) {
+  deleteUserById(id: string) {
     return this.httpClient
       .delete<User>(`${environment.apiURL}/users/${id}`)
       .pipe(mergeMap(() => this.getUsers()));
   }
 
-  updateUser(id: number, updateData: User){
+  updateUser(id: string, updateData: User){
     return this.getUserById(id).pipe(
       mergeMap((existingUser) => {
         const updatedUser: User = {

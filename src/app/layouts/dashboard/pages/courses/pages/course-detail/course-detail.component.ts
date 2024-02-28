@@ -14,7 +14,7 @@ import { Student } from '../../../students/models/student';
 export class CourseDetailComponent {
 
   courseSelected : Course = {
-    id: 0,
+    id: '',
     name: '',
     teacher: ''
   };
@@ -52,7 +52,7 @@ export class CourseDetailComponent {
     })
   }
 
-  deleteStudentFromCourse(studentId: number){
+  deleteStudentFromCourse(studentId: string){
     this.enrollmentService.deleteEnrollmentByStudentAndCourseId(studentId, this.courseSelected.id).subscribe({
       next: () => {
         this.getEnrolledStudents();
