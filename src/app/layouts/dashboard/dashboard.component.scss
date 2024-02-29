@@ -1,3 +1,8 @@
-.dashboard-container{
-    height: 100vh;
+.dashboard-container {
+  height: 100vh;
+  .pages-content {
+    background-color: #d6d6d617;
+    height: calc(100vh - 5rem);
+    overflow-y: scroll;
+  }
 }

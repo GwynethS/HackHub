@@ -1,13 +1,13 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+<table mat-table [dataSource]="dataSource">
 
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let enrollment"> {{enrollment.id}} </td>
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> ID </th>
+    <td mat-cell *matCellDef="let enrollment" class="centered-column"> {{enrollment.id}} </td>
   </ng-container>
 
   <ng-container matColumnDef="studentId">
-    <th mat-header-cell *matHeaderCellDef> Estudiante ID </th>
-    <td mat-cell *matCellDef="let enrollment"> {{enrollment.studentId}} </td>
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> Estudiante ID </th>
+    <td mat-cell *matCellDef="let enrollment" class="centered-column"> {{enrollment.studentId}} </td>
   </ng-container>
 
   <ng-container matColumnDef="studentFullName">
@@ -16,8 +16,8 @@
   </ng-container>
 
   <ng-container matColumnDef="courseId">
-    <th mat-header-cell *matHeaderCellDef> Curso ID </th>
-    <td mat-cell *matCellDef="let enrollment"> {{enrollment.courseId}} </td>
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> Curso ID </th>
+    <td mat-cell *matCellDef="let enrollment" class="centered-column"> {{enrollment.courseId}} </td>
   </ng-container>
 
   <ng-container matColumnDef="courseName">
@@ -26,13 +26,13 @@
   </ng-container>
 
   <ng-container matColumnDef="enrollmentDate">
-    <th mat-header-cell *matHeaderCellDef> Fecha de inscripción </th>
-    <td mat-cell *matCellDef="let enrollment"> {{enrollment.enrollmentDate | date: 'short'}} </td>
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> Fecha de inscripción </th>
+    <td mat-cell *matCellDef="let enrollment" class="centered-column"> {{enrollment.enrollmentDate | date: 'short'}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="actions" class="enrollments-table-actions-column">
-    <th mat-header-cell *matHeaderCellDef> Acciones </th>
-    <td mat-cell *matCellDef="let enrollment" class="enrollments-table-actions-cells" > 
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> Acciones </th>
+    <td mat-cell *matCellDef="let enrollment" class="centered-column actions-cells"> 
       <button mat-icon-button (click)="editEnrollment.emit(enrollment)">
         <mat-icon>edit</mat-icon>
       </button>
@@ -42,8 +42,8 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-headers"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-rows"></tr>
 </table>
 
 

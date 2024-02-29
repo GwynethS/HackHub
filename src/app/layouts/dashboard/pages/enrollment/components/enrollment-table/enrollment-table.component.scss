@@ -1,0 +1,20 @@
+td{
+  border-bottom: solid 1px #cbcacafa;
+}
+
+.table-headers{
+  font-weight: 500;
+}
+
+.table-rows:nth-child(odd){
+  background-color: #cbcaca37;
+}
+
+.centered-column{
+  text-align: center;
+  font-weight: 500;
+}
+
+.actions-cells{
+  color: #333333;
+}

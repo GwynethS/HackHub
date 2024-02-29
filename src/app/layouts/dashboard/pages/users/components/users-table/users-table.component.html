@@ -1,8 +1,8 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+<table mat-table [dataSource]="dataSource">
 
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Id </th>
-    <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> ID </th>
+    <td mat-cell *matCellDef="let user" class="centered-column"> {{user.id}} </td>
   </ng-container>
 
   <ng-container matColumnDef="fullname">
@@ -16,22 +16,22 @@
   </ng-container>
 
   <ng-container matColumnDef="role">
-    <th mat-header-cell *matHeaderCellDef> Rol </th>
-    <td mat-cell *matCellDef="let user"> {{user.role}} </td>
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> Rol </th>
+    <td mat-cell *matCellDef="let user" class="centered-column"> {{user.role}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="actions" class="users-table-actions-column">
-    <th mat-header-cell *matHeaderCellDef> Acciones </th>
-    <td mat-cell *matCellDef="let user" class="users-table-actions-cells" >
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="centered-column"> Acciones </th>
+    <td mat-cell *matCellDef="let user" class="centered-column actions-cells" >
       <button mat-icon-button (click)="editUser.emit(user)">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="deleteUser.emit(user.id)">
+      <button mat-icon-button (click)="deleteUser.emit(user.id)" class="btn-delete">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-headers"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-rows"></tr>
 </table>
