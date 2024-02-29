@@ -2,7 +2,7 @@
   Estudiante: {{studentSelected | fullName}}
 </h2>
 
-<h6 class="mt-4 mb-4">Email: {{studentSelected.email}}</h6>
+<h6 class="mt-4 mb-4">Email: {{studentSelected?.email}}</h6>
 
 <table mat-table [dataSource]="enrolledCourses" class="mat-elevation-z5">
 

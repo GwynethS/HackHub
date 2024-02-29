@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Course } from './models/course';
-import { forkJoin, mergeMap, of, switchMap } from 'rxjs';
+import { forkJoin, mergeMap, of, switchMap, map, catchError } from 'rxjs';
 import { EnrollmentService } from '../enrollment/enrollment.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { Enrollment } from '../enrollment/models/enrollment';
 
 @Injectable()
 export class CoursesService {
@@ -21,21 +22,11 @@ export class CoursesService {
   }
 
   getCoursesByStudent(studentId: string) {
-    return this.enrollmentService.getEnrollmentsByStudentId(studentId).pipe(
-      switchMap((enrollments) => {
-        const courseIds = enrollments.map(enrollment => enrollment.courseId);
-  
-        if (courseIds.length !== 0) {
-          const requests = courseIds.map(id =>
-            this.httpClient.get<Course>(`${environment.apiURL}/courses/${id}`)
-          );
-  
-          return forkJoin(requests);
-        } else {
-          return of([]);
-        }
-      })
-    );
+    return this.httpClient
+      .get<Enrollment[]>(
+        `${environment.apiURL}/enrollments?_embed=course&studentId=${studentId}`
+      )
+      .pipe(map((enrollments) => enrollments.map(({ course }) => course)), catchError(() => of([])));
   }
 
   createCourse(courseData: Course) {
@@ -54,9 +45,8 @@ export class CoursesService {
   }
 
   updateCourse(id: string, updateData: Course) {
-    return this.httpClient.put<Course>(
-      `${environment.apiURL}/courses/${id}`,
-      updateData
-    ).pipe(mergeMap(() => this.getCourses()));
+    return this.httpClient
+      .put<Course>(`${environment.apiURL}/courses/${id}`, updateData)
+      .pipe(mergeMap(() => this.getCourses()));
   }
 }

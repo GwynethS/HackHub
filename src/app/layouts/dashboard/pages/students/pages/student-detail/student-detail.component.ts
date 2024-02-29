@@ -9,16 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
-  styleUrl: './student-detail.component.scss'
+  styleUrl: './student-detail.component.scss',
 })
 export class StudentDetailComponent {
-  studentSelected : Student = {
-    id: '',
-    firstName: '',
-    lastName: '',
-    email: ''
-  };
-  enrolledCourses: Course[] = [];
+  studentSelected: Student | null = null;
+  enrolledCourses: (Course | undefined)[] = [];
 
   displayedColumns = ['id', 'name', 'teacher', 'actions'];
 
@@ -32,29 +27,33 @@ export class StudentDetailComponent {
       .getStudentById(this.route.snapshot.params['id'])
       .subscribe({
         next: (findedStudent) => {
-          if(findedStudent){
-            this.studentSelected = findedStudent; 
+          if (findedStudent) {
+            this.studentSelected = findedStudent;
           }
         },
         complete: () => {
           this.getEnrolledCourses();
-        }
+        },
       });
   }
 
-  getEnrolledCourses(){
-    this.coursesService.getCoursesByStudent(this.studentSelected.id).subscribe({
-      next: (courses) => {
-        if(courses){
-          this.enrolledCourses = courses;
-        }
-      }
-    })
+  getEnrolledCourses() {
+    if (this.studentSelected)
+      this.coursesService
+        .getCoursesByStudent(this.studentSelected.id)
+        .subscribe({
+          next: (courses) => {
+            if (courses.length) {
+              this.enrolledCourses = courses;
+            }
+          },
+        });
   }
 
-  deleteEnrolledCourse(courseId: string){
-    this.enrollmentService.deleteEnrollmentByStudentAndCourseId(this.studentSelected.id, courseId);
-
-    this.getEnrolledCourses();
+  deleteEnrolledCourse(courseId: string) {
+    if (this.studentSelected)
+      this.enrollmentService
+        .deleteEnrollmentByStudentAndCourseId(this.studentSelected.id, courseId)
+        .subscribe({ complete: () => this.getEnrolledCourses() });
   }
 }

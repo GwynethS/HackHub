@@ -18,10 +18,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./layouts/auth/auth.module').then((m) => m.AuthModule),
   },
-  // {
-  //   path: '**',
-  //   redirectTo: 'dashboard',
-  // },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

@@ -1,15 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CreateEnrollmentData, Enrollment } from './models/enrollment';
-import {
-  Observable,
-  forkJoin,
-  from,
-  mapTo,
-  mergeAll,
-  mergeMap,
-  of,
-  switchMap,
-} from 'rxjs';
+import { forkJoin, mergeMap, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 
@@ -43,7 +34,6 @@ export class EnrollmentService {
         enrollmentDate: new Date(),
       }
     );
-    // .pipe(mergeMap(() => this.getEnrollments()));
   }
 
   deleteEnrollmentById(id: string) {
@@ -92,7 +82,6 @@ export class EnrollmentService {
       .pipe(
         switchMap((enrollments) => {
           if (enrollments.length) {
-            console.log(enrollments[0]);
             return this.httpClient.delete<Enrollment>(
               `${environment.apiURL}/enrollments/${enrollments[0].id}`
             );
