@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Course } from './models/course';
-import { forkJoin, mergeMap, of, switchMap, map, catchError } from 'rxjs';
+import { mergeMap, of, map, catchError } from 'rxjs';
 import { EnrollmentService } from '../enrollment/enrollment.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';

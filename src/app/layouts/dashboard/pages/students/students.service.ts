@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, forkJoin, map, mergeMap, of, switchMap } from 'rxjs';
 import { Student } from './models/student';
 import { EnrollmentService } from '../enrollment/enrollment.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { Enrollment } from '../enrollment/models/enrollment';
 
 @Injectable()
 export class StudentsService {
@@ -21,23 +22,11 @@ export class StudentsService {
   }
 
   getStudentsByCourse(courseId: string) {
-    return this.enrollmentService.getEnrollmentsByCourseId(courseId).pipe(
-      switchMap((enrollments) => {
-        const studentIds = enrollments.map(
-          (enrollment) => enrollment.studentId
-        );
-
-        if (studentIds.length !== 0) {
-          const requests = studentIds.map((id) =>
-            this.httpClient.get<Student>(`${environment.apiURL}/students/${id}`)
-          );
-
-          return forkJoin(requests);
-        } else {
-          return of([]);
-        }
-      })
-    );
+    return this.httpClient
+      .get<Enrollment[]>(
+        `${environment.apiURL}/enrollments?_embed=student&courseId=${courseId}`
+      )
+      .pipe(map((enrollments) => enrollments.map(({ student }) => student)), catchError(() => of([])));
   }
 
   createStudent(studentData: Student) {

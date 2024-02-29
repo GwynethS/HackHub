@@ -1,8 +1,8 @@
 <h2 appHeadline>
-  Curso: {{courseSelected.name}}
+  Curso: {{courseSelected?.name}}
 </h2>
 
-<h6 class="mt-4 mb-4">Docente: {{courseSelected.teacher}}</h6>
+<h6 class="mt-4 mb-4">Docente: {{courseSelected?.teacher}}</h6>
 
 <table mat-table [dataSource]="enrolledStudents" class="mat-elevation-z5">
 

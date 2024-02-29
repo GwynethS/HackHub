@@ -12,13 +12,8 @@ import { Student } from '../../../students/models/student';
   styleUrl: './course-detail.component.scss',
 })
 export class CourseDetailComponent {
-
-  courseSelected : Course = {
-    id: '',
-    name: '',
-    teacher: ''
-  };
-  enrolledStudents: Student[] = [];
+  courseSelected: Course | null = null;
+  enrolledStudents: (Student | undefined)[] = [];
 
   displayedColumns = ['id', 'fullname', 'email', 'actions'];
 
@@ -32,31 +27,33 @@ export class CourseDetailComponent {
       .getCourseById(this.route.snapshot.params['id'])
       .subscribe({
         next: (findedCourse) => {
-          if(findedCourse){
-            this.courseSelected = findedCourse; 
+          if (findedCourse) {
+            this.courseSelected = findedCourse;
           }
         },
         complete: () => {
           this.getEnrolledStudents();
-        }
+        },
       });
   }
 
-  getEnrolledStudents(){
-    this.studentsService.getStudentsByCourse(this.courseSelected.id).subscribe({
-      next: (students) => {
-        if(students){
-          this.enrolledStudents = students;
-        }
-      }
-    })
+  getEnrolledStudents() {
+    if (this.courseSelected)
+      this.studentsService
+        .getStudentsByCourse(this.courseSelected.id)
+        .subscribe({
+          next: (students) => {
+            if (students) {
+              this.enrolledStudents = students;
+            }
+          },
+        });
   }
 
-  deleteStudentFromCourse(studentId: string){
-    this.enrollmentService.deleteEnrollmentByStudentAndCourseId(studentId, this.courseSelected.id).subscribe({
-      next: () => {
-        this.getEnrolledStudents();
-      }
-    })
+  deleteStudentFromCourse(studentId: string) {
+    if (this.courseSelected)
+      this.enrollmentService
+        .deleteEnrollmentByStudentAndCourseId(studentId, this.courseSelected.id)
+        .subscribe({ complete: () => this.getEnrolledStudents() });
   }
 }

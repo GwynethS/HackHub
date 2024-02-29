@@ -53,12 +53,6 @@
   ],
   "enrollments": [
     {
-      "id": "dc17",
-      "studentId": "1",
-      "courseId": "2",
-      "enrollmentDate": "2024-02-14T18:22:15.668Z"
-    },
-    {
       "id": "7ee1",
       "studentId": "2128",
       "courseId": "1",
@@ -69,6 +63,12 @@
       "studentId": "c11f",
       "courseId": "1",
       "enrollmentDate": "2024-02-28T21:49:48.534Z"
+    },
+    {
+      "id": "b4af",
+      "studentId": "1",
+      "courseId": "1",
+      "enrollmentDate": "2024-02-29T01:00:40.458Z"
     }
   ]
 }

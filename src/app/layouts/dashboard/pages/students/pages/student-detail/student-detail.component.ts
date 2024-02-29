@@ -43,7 +43,7 @@ export class StudentDetailComponent {
         .getCoursesByStudent(this.studentSelected.id)
         .subscribe({
           next: (courses) => {
-            if (courses.length) {
+            if (courses) {
               this.enrolledCourses = courses;
             }
           },
