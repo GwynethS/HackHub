@@ -1,15 +1,25 @@
-.toolbar{
-    border-radius: 1rem;
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 0.5rem 0.2rem rgba(221, 221, 221, 0.275);
+  height: 5rem;
+  padding: 1rem 2rem;
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #a05aff;
+  }
+  .user-data {
     display: flex;
-    justify-content: end;
-    .user-data{
-        display: flex;
-        align-items: center;
-        .user-icon{
-            width: fit-content;
-            height: fit-content;
-            font-size: 2rem;
-            margin-left: 0.5rem;
-        }
+    align-items: center;
+    color: #6e6d6d;
+    .user-icon {
+      width: fit-content;
+      height: fit-content;
+      font-size: 2rem;
+      margin-left: 0.5rem;
+      color: #8d8b8b;
     }
+  }
 }

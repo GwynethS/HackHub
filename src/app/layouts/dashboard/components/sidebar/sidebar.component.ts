@@ -11,7 +11,7 @@ import { selectAuthUser } from '../../../../core/store/auth/selectors';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  collapsed = false;
+  collapsed = true;
   authUser$: Observable<User | null>;
 
   @Output()

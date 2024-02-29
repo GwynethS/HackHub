@@ -1,22 +1,13 @@
 <div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''">
-  <div class="logo-container">
-    <button class="logo" (click)="toogleCollapse()">H</button>
-    <div class="logo-text" *ngIf="collapsed">HackHub</div>
-    <button
-      type="button"
-      class="btn-closed"
-      *ngIf="collapsed"
-      (click)="closeSidebar()"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-  </div>
+  <button class="btn-menu" (click)="toogleCollapse()">
+    <mat-icon>menu</mat-icon>
+  </button>
   <mat-nav-list class="sidebar-list">
     <div class="sidebar-list-item">
       <a
         #homeLink="routerLinkActive"
         routerLinkActive
-        [activated]="homeLink.isActive"
+        [ngClass]="homeLink.isActive ? 'active' : ''"
         routerLink="home"
         mat-list-item
         class="sidebar-list-link"
@@ -28,11 +19,14 @@
       </a>
     </div>
 
-    <div *ngIf="(authUser$ | async)?.role === 'ADMIN'" class="sidebar-list-item">
+    <div
+      *ngIf="(authUser$ | async)?.role === 'ADMIN'"
+      class="sidebar-list-item"
+    >
       <a
         #usersLink="routerLinkActive"
         routerLinkActive
-        [activated]="usersLink.isActive"
+        [ngClass]="usersLink.isActive ? 'active' : ''"
         routerLink="users"
         mat-list-item
         class="sidebar-list-link"
@@ -48,7 +42,7 @@
       <a
         #studentsLink="routerLinkActive"
         routerLinkActive
-        [activated]="studentsLink.isActive"
+        [ngClass]="studentsLink.isActive ? 'active' : ''"
         routerLink="students"
         mat-list-item
         class="sidebar-list-link"
@@ -59,12 +53,12 @@
         </div>
       </a>
     </div>
-    
+
     <div class="sidebar-list-item">
       <a
         #coursesLink="routerLinkActive"
         routerLinkActive
-        [activated]="coursesLink.isActive"
+        [ngClass]="coursesLink.isActive ? 'active' : ''"
         routerLink="courses"
         mat-list-item
         class="sidebar-list-link"
@@ -80,7 +74,7 @@
       <a
         #enrollmentLink="routerLinkActive"
         routerLinkActive
-        [activated]="enrollmentLink.isActive"
+        [ngClass]="enrollmentLink.isActive ? 'active' : ''"
         routerLink="enrollment"
         mat-list-item
         class="sidebar-list-link"
@@ -93,11 +87,7 @@
     </div>
 
     <div class="sidebar-list-item">
-      <a
-        (click)="logOut()"
-        mat-list-item
-        class="sidebar-list-link"
-      >
+      <a (click)="logOut()" mat-list-item class="sidebar-list-link">
         <div class="sidebar-list-link-content">
           <mat-icon class="sidebar-list-icon">logout</mat-icon>
           <span class="sidebar-link-text" *ngIf="collapsed">Cerrar sesión</span>
