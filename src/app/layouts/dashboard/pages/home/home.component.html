@@ -1,1 +1,43 @@
-<p>home works!</p>
+<h2 appHeadline class="mb-4">Inicio</h2>
+
+<div class="cards-container">
+  <div class="home-card users" *ngIf="(authUser$ | async)?.role === 'ADMIN'" (click)="redirectTo('users')">
+    <div class="card-header">
+      <h3>Usuarios</h3>
+      <mat-icon>person</mat-icon>
+    </div>
+    <div class="card-content">
+      <p class="register-number">{{(registeredUsers$ | async)?.length}}</p><p>registrados</p>
+    </div>
+  </div>
+
+  <div class="home-card students" (click)="redirectTo('students')">
+    <div class="card-header">
+      <h3>Estudiantes</h3>
+      <mat-icon>school</mat-icon>
+    </div>
+    <div class="card-content">
+      <p class="register-number">{{(registeredStudents$ | async)?.length}}</p><p>registrados</p>
+    </div>
+  </div>
+
+  <div class="home-card courses" (click)="redirectTo('courses')">
+    <div class="card-header">
+      <h3>Cursos</h3>
+      <mat-icon>menu_book</mat-icon>
+    </div>
+    <div class="card-content">
+      <p class="register-number">{{(registeredCourses$ | async)?.length}}</p><p>registrados</p>
+    </div>
+  </div>
+
+  <div class="home-card enrollments" (click)="redirectTo('enrollment')">
+    <div class="card-header">
+      <h3>Inscripciones</h3>
+      <mat-icon>assignment_add</mat-icon>
+    </div>
+    <div class="card-content">
+      <p class="register-number">{{(registeredEnrollments$ | async)?.length}}</p><p>registradas</p>
+    </div>
+  </div>
+</div>

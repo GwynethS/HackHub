@@ -22,9 +22,6 @@ import {
 export class EnrollmentDialogComponent {
   enrollmentForm: FormGroup;
 
-  students: Student[] = [];
-  courses: Course[] = [];
-
   students$: Observable<Student[]>;
   courses$: Observable<Course[]>;
 
@@ -52,25 +49,10 @@ export class EnrollmentDialogComponent {
     this.courses$ = this.store.select(selectEnrollmentsCourses);
   }
 
-  ngOnInit() {
-    this.studentsService.getStudents().subscribe({
-      next: (students) => {
-        this.students = students;
-      },
-    });
-
-    this.coursesService.getCourses().subscribe({
-      next: (courses) => {
-        this.courses = courses;
-      },
-    });
-  }
-
   onCreate(): void {
     if (this.enrollmentForm.invalid) {
       this.enrollmentForm.markAllAsTouched();
     } else {
-      // this.dialogRef.close(this.enrollmentForm.value);
       if (this.editingEnrollment) {
         this.store.dispatch(
           EnrollmentActions.updateEnrollment({

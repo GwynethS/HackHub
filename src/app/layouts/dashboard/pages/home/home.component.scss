@@ -1,0 +1,51 @@
+.cards-container{
+  margin-top: 4rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+}
+.home-card{
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 20rem;
+  color: #fff;
+  transition: transform 0.5s ease;
+  .card-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .card-content{
+    margin-top: 2rem;
+    display: flex;
+    align-items: baseline;
+    p{
+      font-size: 1.2rem;
+    }
+    .register-number{
+      font-size: 3rem;
+      font-weight: 600;
+      margin-right: 0.8rem;
+    }
+  }
+  &:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 0.5rem #00000033;
+  }
+}
+
+.home-card.users{
+  background: linear-gradient(90deg, #ffe49e 0%, #fe9496 100%);
+}
+
+.home-card.students{
+  background: linear-gradient(90deg, #ADB4FF 0%, #4855FF 100%);
+}
+
+.home-card.courses{
+  background: linear-gradient(90deg, #8DE7DA 0%, #14C3A4 100%);
+}
+
+.home-card.enrollments{
+  background: linear-gradient(90deg, #fc8ecf 0%, #c2007f 100%);
+}
