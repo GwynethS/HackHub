@@ -1,74 +1,115 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstName": "Gisele",
-      "lastName": "Segura",
-      "email": "lyu@gmail.com",
+      "id": "de81",
+      "firstName": "Josue",
+      "lastName": "Baez",
+      "email": "josuebaez@gmail.com",
       "password": "12345678",
       "role": "ADMIN",
-      "token": "ksjdfhkjah"
+      "token": " lVUjQpQTBr"
     },
     {
-      "id": "2",
+      "id": "4164",
+      "firstName": "Gwyneth",
+      "lastName": "Segura",
+      "email": "gwyneth@gmail.com",
+      "password": "12345678",
+      "role": "ADMIN",
+      "token": " HTbpBmVQh7"
+    },
+    {
+      "id": "2ee2",
       "firstName": "Jean",
       "lastName": "Achamizo",
       "email": "jean@gmail.com",
-      "password": "123456",
+      "password": "12345678",
       "role": "USER",
-      "token": "ladkajlsk"
+      "token": " Xs5xil84tm"
+    },
+    {
+      "id": "e925",
+      "firstName": "Alvaro",
+      "lastName": "Patricio",
+      "email": "alvaro@gmail.com",
+      "password": "12345678",
+      "role": "USER",
+      "token": " s089ACd982"
     }
   ],
   "students": [
     {
-      "id": "1",
-      "firstName": "Gwyneth",
-      "lastName": "Segura",
-      "email": "gwyneth@gmail.com"
-    },
-    {
       "id": "2128",
       "firstName": "Alexandra",
       "lastName": "Ramirez",
-      "email": "ale@gmail.com"
+      "email": "alexandra@gmail.com"
     },
     {
       "id": "c11f",
       "firstName": "Deyvid",
       "lastName": "Guevara",
       "email": "deyvid@gmail.com"
+    },
+    {
+      "id": "ff2d",
+      "firstName": "Carlos",
+      "lastName": "Sanchez",
+      "email": "carlos@gmail.com"
     }
   ],
   "courses": [
     {
-      "id": "1",
-      "name": "Python",
-      "teacher": "Jorge Ramirez"
+      "id": "93aa",
+      "name": "C++",
+      "teacher": "Alejandro Martinez"
     },
     {
-      "id": "2",
+      "id": "f731",
+      "name": "Python",
+      "teacher": "Javier Torres"
+    },
+    {
+      "id": "7bd1",
       "name": "Java",
-      "teacher": "Carlos Perez"
+      "teacher": "Gabriela Diaz"
     }
   ],
   "enrollments": [
     {
-      "id": "7ee1",
-      "studentId": "2128",
-      "courseId": "1",
-      "enrollmentDate": "2024-02-14T18:26:45.784Z"
-    },
-    {
-      "id": "8b21",
+      "id": "4455",
       "studentId": "c11f",
-      "courseId": "1",
-      "enrollmentDate": "2024-02-28T21:49:48.534Z"
+      "courseId": "93aa",
+      "enrollmentDate": "2024-02-29T01:20:25.345Z"
     },
     {
-      "id": "b4af",
-      "studentId": "1",
-      "courseId": "1",
-      "enrollmentDate": "2024-02-29T01:00:40.458Z"
+      "id": "a4b3",
+      "studentId": "ff2d",
+      "courseId": "93aa",
+      "enrollmentDate": "2024-02-29T01:20:39.359Z"
+    },
+    {
+      "id": "3e33",
+      "studentId": "2128",
+      "courseId": "f731",
+      "enrollmentDate": "2024-02-29T01:20:46.681Z"
+    },
+    {
+      "id": "4c66",
+      "studentId": "c11f",
+      "courseId": "f731",
+      "enrollmentDate": "2024-02-29T01:20:55.916Z"
+    },
+    {
+      "id": "ae8e",
+      "studentId": "ff2d",
+      "courseId": "f731",
+      "enrollmentDate": "2024-02-29T01:21:02.473Z"
+    },
+    {
+      "id": "1795",
+      "studentId": "2128",
+      "courseId": "7bd1",
+      "enrollmentDate": "2024-02-29T01:22:06.495Z"
     }
   ]
 }
