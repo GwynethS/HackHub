@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, finalize, map, mergeMap, of } from 'rxjs';
+import { catchError, concatMap, finalize, map, mergeMap, of } from 'rxjs';
 import { Student } from './models/student';
 import { EnrollmentService } from '../enrollment/enrollment.service';
 import { HttpClient } from '@angular/common/http';
@@ -47,10 +47,10 @@ export class StudentsService {
 
   deleteStudentById(id: string) {
     return this.enrollmentService.deleteEnrollmentsByStudentId(id).pipe(
-      mergeMap(() =>
+      concatMap(() =>
         this.httpClient.delete<Student>(`${environment.apiURL}/students/${id}`)
       ),
-      mergeMap(() => this.getStudents())
+      concatMap(() => this.getStudents())
     );
   }
 
