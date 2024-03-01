@@ -6,6 +6,7 @@ import { Observable, catchError, map, of, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Store } from '@ngrx/store';
 import { AuthAction } from '../../core/store/auth/actions';
+import { AlertService } from '../../core/services/alert.service';
 
 interface LoginData {
   email: null | string;
@@ -17,14 +18,15 @@ interface LoginData {
 })
 export class AuthService {
   authUser: User | null = null;
+
   constructor(
     private router: Router,
     private httpClient: HttpClient,
-    private store: Store
+    private store: Store,
+    private alertService: AlertService
   ) {}
 
   private setAuthUser(user: User): void {
-    // this.authUser = user;
     this.store.dispatch(AuthAction.setAuthUser({ user }));
     localStorage.setItem('token', user.token);
   }
@@ -40,14 +42,16 @@ export class AuthService {
             this.setAuthUser(response[0]);
             this.router.navigate(['dashboard']);
           } else {
-            alert('El email o la contraseña son incorrectos');
+            this.alertService.showError(
+              'No se pudo iniciar sesión',
+              'El email o la constraseña son incorrectos'
+            );
           }
         })
       );
   }
 
   logOut(): void {
-    // this.authUser = null;
     this.store.dispatch(AuthAction.logout());
     this.router.navigate(['auth', 'login']);
     localStorage.removeItem('token');
@@ -64,7 +68,6 @@ export class AuthService {
             this.setAuthUser(response[0]);
             return true;
           } else {
-            // this.authUser = null;
             this.store.dispatch(AuthAction.logout());
             localStorage.removeItem('token');
             return false;
