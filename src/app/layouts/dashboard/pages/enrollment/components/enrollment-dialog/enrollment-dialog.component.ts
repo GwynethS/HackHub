@@ -2,8 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Enrollment } from '../../models/enrollment';
-import { StudentsService } from '../../../students/students.service';
-import { CoursesService } from '../../../courses/courses.service';
 import { Student } from '../../../students/models/student';
 import { Course } from '../../../courses/models/course';
 import { Observable } from 'rxjs';
@@ -27,8 +25,6 @@ export class EnrollmentDialogComponent {
 
   constructor(
     private fb: FormBuilder,
-    private studentsService: StudentsService,
-    private coursesService: CoursesService,
     private store: Store,
     private dialogRef: MatDialogRef<EnrollmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA)

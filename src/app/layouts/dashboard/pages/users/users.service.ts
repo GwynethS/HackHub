@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { User } from './models/user';
-import { Observable, mergeMap } from 'rxjs';
+import { Observable, finalize, mergeMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { LoadingService } from '../../../../core/services/loading.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private loadingService: LoadingService
+  ) {}
 
   generateString(length: number) {
     const characters =
@@ -21,7 +25,10 @@ export class UsersService {
   }
 
   getUsers() {
-    return this.httpClient.get<User[]>(`${environment.apiURL}/users`);
+    this.loadingService.setIsLoading(true);
+    return this.httpClient
+      .get<User[]>(`${environment.apiURL}/users`)
+      .pipe(finalize(() => this.loadingService.setIsLoading(false)));
   }
 
   getUserById(id: string): Observable<User | undefined> {
@@ -34,16 +41,20 @@ export class UsersService {
         ...userData,
         token: this.generateString(10),
       })
-      .pipe(mergeMap(() => this.getUsers()));
+      .pipe(
+        mergeMap(() => this.getUsers())
+      );
   }
 
   deleteUserById(id: string) {
     return this.httpClient
       .delete<User>(`${environment.apiURL}/users/${id}`)
-      .pipe(mergeMap(() => this.getUsers()));
+      .pipe(
+        mergeMap(() => this.getUsers())
+      );
   }
 
-  updateUser(id: string, updateData: User){
+  updateUser(id: string, updateData: User) {
     return this.getUserById(id).pipe(
       mergeMap((existingUser) => {
         const updatedUser: User = {

@@ -88,12 +88,6 @@
       "enrollmentDate": "2024-02-29T01:20:39.359Z"
     },
     {
-      "id": "3e33",
-      "studentId": "2128",
-      "courseId": "f731",
-      "enrollmentDate": "2024-02-29T01:20:46.681Z"
-    },
-    {
       "id": "4c66",
       "studentId": "c11f",
       "courseId": "f731",
@@ -104,12 +98,6 @@
       "studentId": "ff2d",
       "courseId": "f731",
       "enrollmentDate": "2024-02-29T01:21:02.473Z"
-    },
-    {
-      "id": "1795",
-      "studentId": "2128",
-      "courseId": "7bd1",
-      "enrollmentDate": "2024-02-29T01:22:06.495Z"
     }
   ]
 }

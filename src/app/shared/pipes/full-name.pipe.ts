@@ -11,7 +11,7 @@ export class FullNamePipe implements PipeTransform {
     if(value){
       return value.firstName + ' ' + value.lastName;
     }else{
-      return 'Nombre';
+      return '';
     }
   }
 

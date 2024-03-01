@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
-import { Observable, EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
 import { EnrollmentActions } from './enrollment.actions';
 import { EnrollmentService } from '../enrollment.service';
 import { StudentsService } from '../../students/students.service';

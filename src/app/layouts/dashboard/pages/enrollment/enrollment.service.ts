@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CreateEnrollmentData, Enrollment } from './models/enrollment';
-import { forkJoin, mergeMap, of, switchMap } from 'rxjs';
+import { finalize, forkJoin, mergeMap, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { LoadingService } from '../../../../core/services/loading.service';
 
 @Injectable()
 export class EnrollmentService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private loadingService: LoadingService) {}
 
   getEnrollments() {
+    this.loadingService.setIsLoading(true);
     return this.httpClient.get<Enrollment[]>(
       `${environment.apiURL}/enrollments?_embed=student&_embed=course`
-    );
+    ).pipe(finalize(() => this.loadingService.setIsLoading(false)));
   }
 
   getEnrollmentsByCourseId(courseId: string) {
