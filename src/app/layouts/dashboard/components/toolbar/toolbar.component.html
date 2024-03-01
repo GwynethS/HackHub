@@ -1,5 +1,6 @@
 <mat-toolbar class="toolbar">
     <div class="logo">HackHub</div>
+    <div class="component-title">{{componentTitle}}</div>
     <div class="user-data">
         <span *ngIf="authUser$ | async let user">{{user | fullName}}</span>
         <mat-icon class="user-icon">
