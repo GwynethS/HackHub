@@ -16,7 +16,6 @@ export class LoginComponent {
       email: this.fb.control('', [
         Validators.required,
         Validators.email,
-        Validators.minLength(3),
       ]),
       password: this.fb.control('', Validators.required),
     });

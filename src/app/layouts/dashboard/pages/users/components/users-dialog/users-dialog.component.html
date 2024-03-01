@@ -7,50 +7,59 @@
 
 <div mat-dialog-content>
   <form [formGroup]="userForm" class="user-form-container">
-    <div class="user-form-inputs container">
-      <div class="row">
-        <mat-form-field class="col-6">
-          <mat-label>Nombre</mat-label>
-          <input formControlName="firstName" matInput type="text" />
-        </mat-form-field>
+    <mat-form-field class="col-12">
+      <mat-label>Nombre</mat-label>
+      <input formControlName="firstName" matInput type="text" />
+      <mat-error>{{
+        userForm.get("firstName")?.errors | errorsFeedback
+      }}</mat-error>
+    </mat-form-field>
 
-        <mat-form-field class="col-6">
-          <mat-label>Apellido</mat-label>
-          <input formControlName="lastName" matInput type="text" />
-        </mat-form-field>
-      </div>
+    <mat-form-field class="col-12">
+      <mat-label>Apellido</mat-label>
+      <input formControlName="lastName" matInput type="text" />
+      <mat-error>{{
+        userForm.get("lastName")?.errors | errorsFeedback
+      }}</mat-error>
+    </mat-form-field>
 
-      <div class="row">
-        <mat-form-field class="col-12">
-          <mat-label>Email</mat-label>
-          <input formControlName="email" matInput type="text" />
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-12">
-          <mat-label>Contraseña</mat-label>
-          <input formControlName="password" matInput [type]="revealPassword ? 'text' : 'password'"/>
-          <button
-          (click)="revealPassword = !revealPassword"
-          matSuffix
-          mat-icon-button
-          type="button"
-        >
-          <mat-icon>visibility</mat-icon>
-        </button>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="col-12">
-          <mat-label>Rol</mat-label>
-          <mat-select formControlName="role">
-            <mat-option *ngFor="let rol of roles" [value]="rol">
-              {{ rol }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-    </div>
+    <mat-form-field class="col-12">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput type="text" />
+      <mat-error>{{
+        userForm.get("email")?.errors | errorsFeedback
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+      <mat-label>Contraseña</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        [type]="revealPassword ? 'text' : 'password'"
+      />
+      <button
+        (click)="revealPassword = !revealPassword"
+        matSuffix
+        mat-icon-button
+        type="button"
+      >
+        <mat-icon>visibility</mat-icon>
+      </button>
+      <mat-error>{{
+        userForm.get("password")?.errors | errorsFeedback
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let rol of roles" [value]="rol">
+          {{ rol }}
+        </mat-option>
+      </mat-select>
+      <mat-error>{{ userForm.get("role")?.errors | errorsFeedback }}</mat-error>
+    </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions class="user-dialog-buttons">

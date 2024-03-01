@@ -31,8 +31,8 @@ export class StudentsDialogComponent {
       email: this.fb.control('', [Validators.required, Validators.email]),
     });
 
-    if(editingStudent){
-      this.studentForm.patchValue(editingStudent);
+    if(this.editingStudent){
+      this.studentForm.patchValue(this.editingStudent);
     }
   }
 

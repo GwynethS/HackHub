@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { HeadlineDirective } from './directives/headline.directive';
 import { MaterialModule } from './material/material.module';
+import { ErrorsFeedbackPipe } from './pipes/errors-feedback.pipe';
 
 
 @NgModule({
   declarations: [
     FullNamePipe,
-    HeadlineDirective
+    HeadlineDirective,
+    ErrorsFeedbackPipe
   ],
   imports: [
     CommonModule,
@@ -17,6 +19,7 @@ import { MaterialModule } from './material/material.module';
   exports:[
     MaterialModule,
     FullNamePipe,
+    ErrorsFeedbackPipe,
     HeadlineDirective
   ]
 })

@@ -29,8 +29,8 @@ export class CoursesDialogComponent {
       ])
     })
   
-    if(editingCourse){
-      this.courseForm.patchValue(editingCourse);
+    if(this.editingCourse){
+      this.courseForm.patchValue(this.editingCourse);
     }
   }
 

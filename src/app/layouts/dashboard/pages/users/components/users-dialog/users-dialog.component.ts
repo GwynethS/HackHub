@@ -35,8 +35,8 @@ export class UsersDialogComponent {
       role: this.fb.control('', [Validators.required]),
     });
 
-    if(editingUser){
-      this.userForm.patchValue(editingUser);
+    if(this.editingUser){
+      this.userForm.patchValue(this.editingUser);
     }
   }
 
