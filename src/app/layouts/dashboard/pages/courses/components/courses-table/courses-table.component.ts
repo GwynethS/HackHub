@@ -30,7 +30,7 @@ export class CoursesTableComponent {
     this.authUser$ = this.store.select(selectAuthUser);
   }
 
-  redirectToCourseDetail(courseId: number): void {
+  redirectToCourseDetail(courseId: string): void {
     this.router.navigate(['/dashboard/courses', courseId]);
   }
 }

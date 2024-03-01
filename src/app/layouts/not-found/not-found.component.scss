@@ -1,0 +1,36 @@
+.not-found-container {
+  height: 100vh;
+  background: linear-gradient(135deg, #4bcbeb 0%, #a05aff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .not-found-card {
+    height: 70vh;
+    width: 50vw;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    h1 {
+      font-size: 11rem;
+      font-weight: 900;
+      background: -webkit-linear-gradient(135deg, #4bcbeb 0%, #bd8cff 65%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2 {
+      font-weight: 800;
+      color: #868686;
+    }
+    p{
+      color: #717171;
+      margin: 2rem;
+    }
+    button{
+      margin-top: 1rem;
+      height: 2.5rem;
+      font-weight: 600;
+    }
+  }
+}

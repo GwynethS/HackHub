@@ -23,6 +23,13 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
+  {
+    path:'**',
+    loadChildren: () =>
+      import('./layouts/not-found/not-found.module').then(
+        (m) => m.NotFoundModule
+      ),
+  }
 ];
 
 @NgModule({
