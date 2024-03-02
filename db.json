@@ -1,15 +1,6 @@
 {
   "users": [
     {
-      "id": "de81",
-      "firstName": "Josue",
-      "lastName": "Baez",
-      "email": "josuebaez@gmail.com",
-      "password": "12345678",
-      "role": "ADMIN",
-      "token": " lVUjQpQTBr"
-    },
-    {
       "id": "4164",
       "firstName": "Gwyneth",
       "lastName": "Segura",
