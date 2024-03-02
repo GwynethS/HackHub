@@ -19,46 +19,25 @@
       "token": " HTbpBmVQh7"
     },
     {
-      "id": "2ee2",
-      "firstName": "Jean",
-      "lastName": "Achamizo",
-      "email": "jean@gmail.com",
+      "id": "b5e9",
+      "firstName": "Alexandra",
+      "lastName": "Ramirez",
+      "email": "alexandra@gmail.com",
       "password": "12345678",
       "role": "USER",
-      "token": " Xs5xil84tm"
+      "token": " FqbhfKPUBj"
     },
     {
-      "id": "e925",
-      "firstName": "Alvaro",
-      "lastName": "Patricio",
-      "email": "alvaro@gmail.com",
+      "id": "931b",
+      "firstName": "Deyvid",
+      "lastName": "Guevara",
+      "email": "deyvid@gmail.com",
       "password": "12345678",
       "role": "USER",
-      "token": " s089ACd982"
-    },
-    {
-      "id": "2712",
-      "firstName": "Camila",
-      "lastName": "Martinez",
-      "email": "camila@gmail.com",
-      "password": "12345678",
-      "role": "USER",
-      "token": " ZUp50g8QRL"
+      "token": " WmoVq0ddFF"
     }
   ],
   "students": [
-    {
-      "id": "2128",
-      "firstName": "Alexandra",
-      "lastName": "Ramirez",
-      "email": "alexandra@gmail.com"
-    },
-    {
-      "id": "c11f",
-      "firstName": "Deyvid",
-      "lastName": "Guevara",
-      "email": "deyvid@gmail.com"
-    },
     {
       "id": "ff2d",
       "firstName": "Carlos",
@@ -70,6 +49,18 @@
       "lastName": "Quiroz",
       "email": "laura@gmail.com",
       "id": "b77b"
+    },
+    {
+      "id": "defc",
+      "firstName": "Jean",
+      "lastName": "Achamizo",
+      "email": "jean@gmail.com"
+    },
+    {
+      "id": "235e",
+      "firstName": "Alvaro",
+      "lastName": "Patricio",
+      "email": "alvaro@gmail.com"
     }
   ],
   "courses": [
@@ -108,30 +99,6 @@
       "enrollmentDate": "2024-03-01T18:33:43.667Z"
     },
     {
-      "id": "e026",
-      "studentId": "2128",
-      "courseId": "f731",
-      "enrollmentDate": "2024-03-01T18:35:09.940Z"
-    },
-    {
-      "id": "2551",
-      "studentId": "c11f",
-      "courseId": "b371",
-      "enrollmentDate": "2024-03-01T18:35:18.541Z"
-    },
-    {
-      "studentId": "2128",
-      "courseId": "93aa",
-      "enrollmentDate": "2024-03-01T18:35:44.934Z",
-      "id": "3a24"
-    },
-    {
-      "id": "5dd8",
-      "studentId": "c11f",
-      "courseId": "7bd1",
-      "enrollmentDate": "2024-03-01T18:36:00.986Z"
-    },
-    {
       "id": "1140",
       "studentId": "ff2d",
       "courseId": "f731",
@@ -142,6 +109,18 @@
       "studentId": "b77b",
       "courseId": "b371",
       "enrollmentDate": "2024-03-01T18:37:04.687Z"
+    },
+    {
+      "id": "e30a",
+      "studentId": "defc",
+      "courseId": "7bd1",
+      "enrollmentDate": "2024-03-01T23:44:41.423Z"
+    },
+    {
+      "id": "3a3e",
+      "studentId": "235e",
+      "courseId": "f731",
+      "enrollmentDate": "2024-03-01T23:44:49.808Z"
     }
   ]
 }
