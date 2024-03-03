@@ -4,6 +4,7 @@ import { CoursesService } from './courses.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CoursesDialogComponent } from './components/courses-dialog/courses-dialog.component';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-courses',
@@ -17,7 +18,8 @@ export class CoursesComponent implements OnDestroy {
 
   constructor(
     private courseService: CoursesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -71,13 +73,17 @@ export class CoursesComponent implements OnDestroy {
   }
 
   onDeleteCourse(id: string): void {
-    this.subscriptions.push(
-      this.courseService.deleteCourseById(id).subscribe({
-        next: (courses) => {
-          this.courses = courses;
-        },
-      })
-    );
+    this.alertService.showConfirmDeleteAction('este curso').then((result) => {
+      if (result.isConfirmed) {
+        this.subscriptions.push(
+          this.courseService.deleteCourseById(id).subscribe({
+            next: (courses) => {
+              this.courses = courses;
+            },
+          })
+        );
+      }
+    });
   }
 
   ngOnDestroy(): void {

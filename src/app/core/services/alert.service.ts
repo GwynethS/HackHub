@@ -15,11 +15,7 @@ export class AlertService {
       }
     });
   }
-
-  showAlert(options: SweetAlertOptions): void{
-    this.notification$.next(options);
-  }
-
+  
   showSuccess(title: string, message: string): void{
     this.notification$.next({
       icon: 'success',
@@ -27,13 +23,30 @@ export class AlertService {
       text: message
     });
   }
-
+  
   showError(title: string, message?: string): void{
     this.notification$.next({
       icon: 'error',
       title,
       text: message,
-      confirmButtonColor: '#8e48ff',
+      confirmButtonColor: '#a05aff',
+    });
+  }
+
+  showConfirmDeleteAction(user: string){
+    return Swal.fire({
+      title: `¿Estás seguro de que deseas eliminar ${user}?`,
+      text: 'No podrás revertir esta acción',
+      icon: "warning",
+      iconColor: "#EC9892",
+      showCancelButton: true,
+      cancelButtonColor: "#b0b0b0",
+      confirmButtonColor: "#d93025",
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: "Cancelar",
+      customClass: {
+        cancelButton: "alter-btn-cancel",
+      },
     });
   }
 }

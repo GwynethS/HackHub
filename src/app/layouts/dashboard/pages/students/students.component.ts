@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { StudentsDialogComponent } from './components/students-dialog/students-dialog.component';
 import { StudentsService } from './students.service';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-students',
@@ -17,7 +18,8 @@ export class StudentsComponent implements OnDestroy{
 
   constructor(
     private studentService: StudentsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -71,13 +73,17 @@ export class StudentsComponent implements OnDestroy{
   }
 
   onDeleteStudent(id: string): void {
-    this.subscriptions.push(
-      this.studentService.deleteStudentById(id).subscribe({
-        next: (students) => {
-          this.students = students;
-        },
-      })
-    );
+    this.alertService.showConfirmDeleteAction('este estudiante').then((result) => {
+      if (result.isConfirmed) {
+        this.subscriptions.push(
+          this.studentService.deleteStudentById(id).subscribe({
+            next: (students) => {
+              this.students = students;
+            },
+          })
+        );
+      }
+    });
   }
 
   ngOnDestroy(): void {

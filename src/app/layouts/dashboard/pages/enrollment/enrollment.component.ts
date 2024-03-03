@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { selectEnrollments } from './store/enrollment.selectors';
 import { EnrollmentActions } from './store/enrollment.actions';
+import { AlertService } from '../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-enrollment',
@@ -19,7 +20,8 @@ export class EnrollmentComponent implements OnDestroy {
 
   constructor(
     public dialog: MatDialog,
-    private store: Store
+    private store: Store,
+    private alertService: AlertService
   ) {
     this.subcriptions.push(
       this.store.select(selectEnrollments).subscribe({
@@ -43,7 +45,11 @@ export class EnrollmentComponent implements OnDestroy {
   }
 
   onDeleteEnrollment(id: string): void {
-    this.store.dispatch(EnrollmentActions.deleteEnrollment({ id }));
+    this.alertService.showConfirmDeleteAction('esta inscripción').then((result) => {
+      if (result.isConfirmed) {
+        this.store.dispatch(EnrollmentActions.deleteEnrollment({ id }));
+      }
+    });
   }
 
   ngOnDestroy(): void {

@@ -4,6 +4,7 @@ import { User } from './models/user';
 import { UsersService } from './users.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +16,11 @@ export class UsersComponent implements OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  constructor(private usersService: UsersService, public dialog: MatDialog) {}
+  constructor(
+    private usersService: UsersService,
+    public dialog: MatDialog,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -68,13 +73,17 @@ export class UsersComponent implements OnDestroy {
   }
 
   onDeleteUser(id: string): void {
-    this.subscriptions.push(
-      this.usersService.deleteUserById(id).subscribe({
-        next: (users) => {
-          this.users = users;
-        },
-      })
-    );
+    this.alertService.showConfirmDeleteAction('este usuario').then((result) => {
+      if (result.isConfirmed) {
+        this.subscriptions.push(
+          this.usersService.deleteUserById(id).subscribe({
+            next: (users) => {
+              this.users = users;
+            },
+          })
+        );
+      }
+    });
   }
 
   ngOnDestroy(): void {
