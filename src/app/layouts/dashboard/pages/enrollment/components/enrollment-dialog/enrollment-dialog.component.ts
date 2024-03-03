@@ -11,6 +11,8 @@ import {
   selectEnrollmentsCourses,
   selectEnrollmentsStudents,
 } from '../../store/enrollment.selectors';
+import { EnrollmentService } from '../../enrollment.service';
+import { AlertService } from '../../../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-enrollment-dialog',
@@ -26,6 +28,8 @@ export class EnrollmentDialogComponent {
   constructor(
     private fb: FormBuilder,
     private store: Store,
+    private enrollmentService: EnrollmentService,
+    private alertService: AlertService,
     private dialogRef: MatDialogRef<EnrollmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
     private editingEnrollment?: Enrollment
@@ -49,21 +53,34 @@ export class EnrollmentDialogComponent {
     if (this.enrollmentForm.invalid) {
       this.enrollmentForm.markAllAsTouched();
     } else {
-      if (this.editingEnrollment) {
-        this.store.dispatch(
-          EnrollmentActions.updateEnrollment({
-            id: this.editingEnrollment.id,
-            data: this.enrollmentForm.value,
-          })
-        );
-      } else {
-        this.store.dispatch(
-          EnrollmentActions.createEnrollment({
-            data: this.enrollmentForm.value,
-          })
-        );
-      }
-      this.dialogRef.close();
+      this.enrollmentService
+        .validateExistingEnrollment(
+          this.enrollmentForm.value['studentId'],
+          this.enrollmentForm.value['courseId']
+        )
+        .subscribe({
+          next: (response) => {
+            if (!response) {
+              if (this.editingEnrollment) {
+                this.store.dispatch(
+                  EnrollmentActions.updateEnrollment({
+                    id: this.editingEnrollment.id,
+                    data: this.enrollmentForm.value,
+                  })
+                );
+              } else {
+                this.store.dispatch(
+                  EnrollmentActions.createEnrollment({
+                    data: this.enrollmentForm.value,
+                  })
+                );
+              }
+              this.dialogRef.close();
+            }else{
+              this.alertService.showError('Error', 'Este estudiante ya se encuentra registrado en este curso.');
+            }
+          },
+        });
     }
   }
 

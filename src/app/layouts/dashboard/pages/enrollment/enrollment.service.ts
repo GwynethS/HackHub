@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CreateEnrollmentData, Enrollment } from './models/enrollment';
-import { finalize, forkJoin, mergeMap, of, switchMap } from 'rxjs';
+import { finalize, forkJoin, map, mergeMap, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { LoadingService } from '../../../../core/services/loading.service';
 
 @Injectable()
 export class EnrollmentService {
-  constructor(private httpClient: HttpClient, private loadingService: LoadingService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private loadingService: LoadingService
+  ) {}
 
   getEnrollments() {
     this.loadingService.setIsLoading(true);
-    return this.httpClient.get<Enrollment[]>(
-      `${environment.apiURL}/enrollments?_embed=student&_embed=course`
-    ).pipe(finalize(() => this.loadingService.setIsLoading(false)));
+    return this.httpClient
+      .get<Enrollment[]>(
+        `${environment.apiURL}/enrollments?_embed=student&_embed=course`
+      )
+      .pipe(finalize(() => this.loadingService.setIsLoading(false)));
   }
 
   getEnrollmentsByCourseId(courseId: string) {
@@ -102,5 +107,18 @@ export class EnrollmentService {
         enrollmentDate: new Date(),
       }
     );
+  }
+
+  validateExistingEnrollment(studentId: string, courseId: string) {
+    return this.httpClient
+      .get<Enrollment[]>(
+        `${environment.apiURL}/enrollments?studentId=${studentId}&courseId=${courseId}`
+      )
+      .pipe(
+        map((enrollments) => {
+          if (enrollments.length) return true;
+          else return false;
+        })
+      );
   }
 }
