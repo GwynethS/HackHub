@@ -77,7 +77,7 @@ export class EnrollmentDialogComponent {
               }
               this.dialogRef.close();
             }else{
-              this.alertService.showError('Error', 'Este estudiante ya se encuentra registrado en este curso.');
+              this.alertService.showError('No se pudo completar la acción', 'Este estudiante ya se encuentra registrado en este curso.');
             }
           },
         });

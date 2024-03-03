@@ -6,13 +6,14 @@ import { StudentsService } from '../../../students/students.service';
 import { EnrollmentService } from '../../../enrollment/enrollment.service';
 import { Student } from '../../../students/models/student';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../../../../../../core/services/alert.service';
 
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.scss',
 })
-export class CourseDetailComponent implements OnDestroy{
+export class CourseDetailComponent implements OnDestroy {
   courseSelected: Course | null = null;
   enrolledStudents: (Student | undefined)[] = [];
 
@@ -24,6 +25,7 @@ export class CourseDetailComponent implements OnDestroy{
     private coursesService: CoursesService,
     private studentsService: StudentsService,
     private enrollmentService: EnrollmentService,
+    private alertService: AlertService,
     private route: ActivatedRoute
   ) {
     this.subscriptions.push(
@@ -58,15 +60,18 @@ export class CourseDetailComponent implements OnDestroy{
   }
 
   deleteStudentFromCourse(studentId: string) {
-    if (this.courseSelected)
-      this.subscriptions.push(
-        this.enrollmentService
-          .deleteEnrollmentByStudentAndCourseId(
-            studentId,
-            this.courseSelected.id
-          )
-          .subscribe({ complete: () => this.getEnrolledStudents() })
-      );
+    this.alertService.showConfirmDeleteAction('este estudiante').then((result) => {
+      if (result.isConfirmed && this.courseSelected) {
+        this.subscriptions.push(
+          this.enrollmentService
+            .deleteEnrollmentByStudentAndCourseId(
+              studentId,
+              this.courseSelected.id
+            )
+            .subscribe({ complete: () => this.getEnrolledStudents() })
+        );
+      }
+    });
   }
 
   ngOnDestroy(): void {
